@@ -22,10 +22,12 @@ public class GamePanel extends JPanel {
 	
 	JLabel time;
 	JLabel points;
+        JLabel soul;
 	
 	int pointsCount = 0;
-	int timeleft = 59;
+	int timeleft = 100;
 	int counter  = 0;
+        int soulCount = 5;
 	
 	boolean gameOver = false;
 	
@@ -45,10 +47,14 @@ public class GamePanel extends JPanel {
 	    
                 points = new JLabel("Points: 0");
 		points.setBounds(100,10,100,20);
+                
+                soul = new JLabel ("Soul : 5");
+                soul.setBounds(200, 100, 150, 20);
 		
 		/*adding both components in jpanel*/
 		add(time);
 		add(points);
+                add(soul);
 		
 		addKeyListener(new KeyAdapter(){
 			public void keyPressed(KeyEvent ke){
