@@ -10,7 +10,7 @@ import javax.swing.*;
 import java.util.*;
 
 public class GamePanelEasy extends JPanel {
-    Image gamebkg = new ImageIcon("images\\menuplay.png").getImage();
+        Image gamebkg = new ImageIcon("images\\menuplay.png").getImage();
 	Image cateasy  = new ImageIcon("images\\cateasy.png").getImage();
 	Image ikankuning     = new ImageIcon("images\\ikankuning.png").getImage();
 	Image gameOverbkg= new ImageIcon("images\\menukalah.png").getImage();
@@ -95,6 +95,7 @@ public class GamePanelEasy extends JPanel {
 	void detectCollision(){
 		Rectangle cateasyRect = new Rectangle(x_cateasy,y_cateasy,200,65); //making a rectangle on the cateasy
 		Rectangle ikankuningRect    = new Rectangle(x_ikankuning,y_ikankuning,45,67); //making a rectangle on ikankuning
+                
 		
 		if(ikankuningRect.intersects(cateasyRect)){
 			pointsCount+=2; // give 5 points on each catch
@@ -108,11 +109,12 @@ public class GamePanelEasy extends JPanel {
 	void checkGameOver(){
 		if(timeleft <= 0 || soulCount <= 0)
 		{
-			JLabel yourScore = new JLabel("Your SCORE :" + pointsCount);
+			JLabel yourScore = new JLabel();
+                        yourScore.save(pointsCount);
 			tempbkg = gameOverbkg;
-			yourScore.setBounds(400, 400, 200, 100);
+			yourScore.setBounds(600, 600, 200, 100);
 			gameOver = true;
-			yourScore.setForeground(Color.RED);
+			yourScore.setForeground(Color.BLACK);
 			add(yourScore);
 		}
 	}

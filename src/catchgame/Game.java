@@ -9,31 +9,30 @@ import javax.swing.*;
 
 public class Game extends JFrame {
     static MenuPanel mp = new MenuPanel();
-	static HelpPanel hp = new HelpPanel();
-	static LevelPanel lp = new LevelPanel();
-	static GamePanelEasy gpe = new GamePanelEasy();
-	static GamePanelMedium gpm = new GamePanelMedium();
-	static GamePanelHard gph = new GamePanelHard();
+    static HelpPanel hp = new HelpPanel();
+    static LevelPanel lp = new LevelPanel();
+    static GamePanelEasy gpe = new GamePanelEasy();
+    static GamePanelMedium gpm = new GamePanelMedium();
+    static GamePanelHard gph = new GamePanelHard();
 
-	static CardLayout cl = new CardLayout();
-	static JPanel cards = new JPanel(); // to contain the panels as cards
+    static CardLayout cl = new CardLayout();
+    static JPanel cards = new JPanel(); // to contain the panels as cards
 	
-	Game(){
+    public Game() {
+        cards.setLayout(cl);// setting the layout to cardlayout
+	cards.add(mp, "MenuPanel");
+	cards.add(hp, "HelpPanel");
+	cards.add(gpe, "GamePanelEasy");
+	cards.add(gpm, "GamePanelMedium");
+	cards.add(gph, "GamePanelHard");
+	cards.add(lp, "LevelPanel");
+	cl.show(cards, "MenuPanel");
+	add(cards); //adding the panel with cardlayout in JFrame
 		
-		cards.setLayout(cl);// setting the layout to cardlayout
-		cards.add(mp, "MenuPanel");
-		cards.add(hp, "HelpPanel");
-		cards.add(gpe, "GamePanelEasy");
-		cards.add(gpm, "GamePanelMedium");
-		cards.add(gph, "GamePanelHard");
-		cards.add(lp, "LevelPanel");
-		cl.show(cards, "MenuPanel");
-		add(cards); //adding the panel with cardlayout in JFrame
-		
-		setTitle("Catch The Eggs Game");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(1280, 720); //frame size
-		setVisible(true);
-		setResizable(false);   //frame visibility	
-	}//end constructor
+	setTitle("Catch The Eggs Game");
+	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	setSize(1280, 720); //frame size
+	setVisible(true);
+	setResizable(false);   //frame visibility    }
+    }
 }
