@@ -14,7 +14,7 @@ public class MenuPanel extends JPanel {
     JButton help = new JButton("");
     JButton exit = new JButton("");
         
-    Image menubkg = new ImageIcon("images\\menubkg.png").getImage();  //menu background
+    Image menubkg = new ImageIcon("images\\menumeong.jpeg").getImage();  //menu background
         
     /* Setting icons on buttons */
     ImageIcon playbtn = new ImageIcon("buttons\\play.png"); 
@@ -49,7 +49,7 @@ public class MenuPanel extends JPanel {
         
         public void mouseClicked(MouseEvent me){
             if(me.getSource()== play){
-                Game.cl.show(Game.cards, "GamePanel"); //show gamePanel when play is clicked
+                Game.cl.show(Game.cards, "LevelPanel"); //show gamePanel when play is clicked
             }
             if(me.getSource()== help){
                 Game.cl.show(Game.cards, "HelpPanel"); //show helpPanel when help is clicked

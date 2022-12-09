@@ -9,11 +9,11 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.util.*;
 
-public class GamePanel extends JPanel {
+public class GamePanelEasy extends JPanel {
     Image gamebkg = new ImageIcon("images\\gamebkg.png").getImage();
-	Image basket  = new ImageIcon("images\\tikus.png").getImage();
-	Image egg     = new ImageIcon("images\\uang.png").getImage();
-	Image gameOverbkg= new ImageIcon("images\\gameOverbkg.png").getImage();
+	Image basket  = new ImageIcon("images\\basket.png").getImage();
+	Image egg     = new ImageIcon("images\\egg.png").getImage();
+	Image gameOverbkg= new ImageIcon("images\\gameover.jpeg").getImage();
 	Image tempbkg; //temporary background
 	
 	int x_basket,y_basket; //basket x and y  coordinates
@@ -22,16 +22,16 @@ public class GamePanel extends JPanel {
 	
 	JLabel time;
 	JLabel points;
-        JLabel soul;
+	JLabel soul;
 	
 	int pointsCount = 0;
 	int timeleft = 100;
 	int counter  = 0;
-        int soulCount = 5;
+	int soulCount = 5;
 	
 	boolean gameOver = false;
 	
-	GamePanel(){
+	GamePanelEasy(){
 		
 		setLayout(null);
 		setFocusable(true);
@@ -41,30 +41,30 @@ public class GamePanel extends JPanel {
 		x_egg = (int)rand.nextInt(1000);
 		y_egg = 0;
 		
-                time = new JLabel("Time: 59");
+	    time = new JLabel("Time: 100");
 		time.setBounds(20, 10, 50, 20); //setting the time label on screen
 	    
 	    
-                points = new JLabel("Points: 0");
+	    points = new JLabel("Points: 0");
 		points.setBounds(100,10,100,20);
-                
-                soul = new JLabel ("Soul : 5");
-                soul.setBounds(200, 10, 150, 20);
 		
+		soul = new JLabel ("Soul : 5");
+        soul.setBounds(200, 10, 150, 20);
+
 		/*adding both components in jpanel*/
 		add(time);
 		add(points);
-                add(soul);
+		add(soul);
 		
 		addKeyListener(new KeyAdapter(){
 			public void keyPressed(KeyEvent ke){
 				
 				if(ke.getKeyCode() == ke.VK_LEFT & x_basket>10){
-					x_basket-=10;
+					x_basket-=50;
 					repaint(); // redraw at new position
 				}
 				if(ke.getKeyCode() == ke.VK_RIGHT & x_basket<1000){
-					x_basket+=10; // redraw at new position
+					x_basket+=50; // redraw at new position
 					repaint();
 				}
 			}//end keypressed
@@ -74,10 +74,10 @@ public class GamePanel extends JPanel {
 	void fallEgg(){
 		if(y_egg >=650){
 			y_egg = 0;
-			x_egg = rand.nextInt(1000);
+			x_egg = rand.nextInt(1000); //posisi telur jatuh
 		}
 		else
-			y_egg++;
+			y_egg+=1; //ngatur kecepatan telur
 	}
 	
 	void updateTime(){
@@ -95,21 +95,21 @@ public class GamePanel extends JPanel {
 		Rectangle eggRect    = new Rectangle(x_egg,y_egg,45,67); //making a rectangle on egg
 		
 		if(eggRect.intersects(basketRect)){
-			pointsCount+=5; // give 5 points on each catch
+			pointsCount+=2; // give 5 points on each catch
 			points.setText("Points:"+pointsCount); // set the count
 			y_egg = 0; // for next egg
 			x_egg = rand.nextInt(1000); // again randomizing x axis of egg
 		}
 	}//end collision detection
-        
-        void opportunity(){
-            if(y_egg >=650){
-			y_egg = 0;
-                        soulCount --;
-            }
-            soul.setText("Soul: " +soulCount);
-        }
 	
+	void opportunity(){
+		if(y_egg >=650){
+					y_egg = 0;
+					soulCount --;
+		}
+		soul.setText("Soul: " +soulCount);
+	}
+
 	void checkGameOver(){
 		if(timeleft <= 0 || soulCount <= 0)
 		{
@@ -126,7 +126,6 @@ public class GamePanel extends JPanel {
 		super.paintComponent(g);
 		Graphics2D g2d = (Graphics2D)g;
 		g2d.drawImage(tempbkg,0,0,null); //game background
-		
 		checkGameOver();
 		
 		if(gameOver == false){
@@ -136,7 +135,7 @@ public class GamePanel extends JPanel {
 			
 			fallEgg();
 			detectCollision();
-                        opportunity();
+			opportunity();
 		
 			g2d.drawImage(egg, x_egg, y_egg,null); //drawing egg at new position
 			g2d.drawImage(basket, x_basket, y_basket, null); //drawing basket
@@ -145,3 +144,4 @@ public class GamePanel extends JPanel {
 		repaint();	
 	}//end paintComponent
 }//end class
+

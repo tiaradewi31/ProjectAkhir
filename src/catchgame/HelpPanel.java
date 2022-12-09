@@ -31,3 +31,4 @@ public class HelpPanel extends JPanel {
 		repaint();
 	}//end paintComponent
 }//end class
+
