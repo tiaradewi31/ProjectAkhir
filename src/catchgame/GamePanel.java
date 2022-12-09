@@ -101,9 +101,17 @@ public class GamePanel extends JPanel {
 			x_egg = rand.nextInt(1000); // again randomizing x axis of egg
 		}
 	}//end collision detection
+        
+        void opportunity(){
+            if(y_egg >=650){
+			y_egg = 0;
+                        soulCount --;
+            }
+            soul.setText("Soul: " +soulCount);
+        }
 	
 	void checkGameOver(){
-		if(timeleft <= 0)
+		if(timeleft <= 0 || soulCount <= 0)
 		{
 			JLabel yourScore = new JLabel("Your SCORE :" + pointsCount);
 			tempbkg = gameOverbkg;
@@ -128,6 +136,7 @@ public class GamePanel extends JPanel {
 			
 			fallEgg();
 			detectCollision();
+                        opportunity();
 		
 			g2d.drawImage(egg, x_egg, y_egg,null); //drawing egg at new position
 			g2d.drawImage(basket, x_basket, y_basket, null); //drawing basket
