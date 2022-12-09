@@ -10,7 +10,7 @@ import javax.swing.*;
 
 
 public class HelpPanel extends JPanel {
-    Image helpbkg = new ImageIcon("images\\helpbkg.png").getImage(); //help image background
+    Image helpbkg = new ImageIcon("images\\menuhelp.png").getImage(); //help image background
 	JButton back = new JButton("Back"); //back button
 	
 	HelpPanel(){

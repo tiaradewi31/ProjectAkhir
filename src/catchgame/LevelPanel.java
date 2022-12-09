@@ -15,19 +15,16 @@ public class LevelPanel extends JPanel {
     JButton medium = new JButton("");
     JButton hard = new JButton("");
         
-    Image levelbkg = new ImageIcon("images\\gameOverbkg.png").getImage();  //level background
+    Image levelbkg = new ImageIcon("images\\menulevel.png").getImage();  //level background
         
     /* Setting icons on buttons */
     ImageIcon easybtn = new ImageIcon("buttons\\easy.png"); 
     ImageIcon mediumbtn = new ImageIcon("buttons\\medium.png");
     ImageIcon hardbtn = new ImageIcon("buttons\\hard.png");
     
-    JPanel center = new JPanel(); //adding another jpanel in a panel for boxLayout
         
     LevelPanel(){
-            
-        center.setLayout(new BoxLayout(center,BoxLayout.Y_AXIS)); //setting box layout 
-        add(center); //adding the panel to anothe JPanel
+
             
         /* setting icons on buttons */
         easy.setIcon(easybtn); 
@@ -35,9 +32,9 @@ public class LevelPanel extends JPanel {
         hard.setIcon(hardbtn);
             
         /* adding the buttons in the panel */
-        center.add(easy);
-        center.add(medium);
-        center.add(hard);
+        add(easy);
+        add(medium);
+        add(hard);
                     
         /* adding mouseListeners on buttons */
         easy.addMouseListener(new Click());
