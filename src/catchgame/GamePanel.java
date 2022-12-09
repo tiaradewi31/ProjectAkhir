@@ -49,7 +49,7 @@ public class GamePanel extends JPanel {
 		points.setBounds(100,10,100,20);
                 
                 soul = new JLabel ("Soul : 5");
-                soul.setBounds(200, 100, 150, 20);
+                soul.setBounds(200, 10, 150, 20);
 		
 		/*adding both components in jpanel*/
 		add(time);
