@@ -14,6 +14,6 @@ public class CatchGame {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        new Game();//making an object
-	}//end main
-}//end class
+        Game g = new Game();
+    }
+}
