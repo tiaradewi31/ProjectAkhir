@@ -63,7 +63,7 @@ public class GamePanelEasy extends JPanel {
 					x_basket-=50;
 					repaint(); // redraw at new position
 				}
-				if(ke.getKeyCode() == ke.VK_RIGHT & x_basket<1000){
+				if(ke.getKeyCode() == ke.VK_RIGHT & x_basket<1150){
 					x_basket+=50; // redraw at new position
 					repaint();
 				}
@@ -105,6 +105,7 @@ public class GamePanelEasy extends JPanel {
 	void opportunity(){
 		if(y_egg >=650){
 					y_egg = 0;
+					x_egg = rand.nextInt(1000);
 					soulCount --;
 		}
 		soul.setText("Soul: " +soulCount);
