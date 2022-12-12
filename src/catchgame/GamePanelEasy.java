@@ -110,7 +110,7 @@ public class GamePanelEasy extends JPanel {
 		if(timeleft <= 0 || soulCount <= 0)
 		{
 			JLabel yourScore = new JLabel();
-                        yourScore.save(pointsCount);
+                       // yourScore.save(pointsCount);
 			tempbkg = gameOverbkg;
 			yourScore.setBounds(600, 600, 200, 100);
 			gameOver = true;
