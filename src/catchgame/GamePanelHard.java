@@ -15,24 +15,22 @@ import javax.swing.*;
 import java.util.*;
 
 public class GamePanelHard extends JPanel {
-    Image gamebkg = new ImageIcon("images\\menuplay.png").getImage();
+        Image gamebkg = new ImageIcon("images\\menuplay.png").getImage();
 	Image cathard  = new ImageIcon("images\\cathard.png").getImage();
 	Image ikanputih     = new ImageIcon("images\\ikanputih.png").getImage();
-    Image ikanhiu    = new ImageIcon("images\\ikanhiu.png").getImage();
+        Image ikanhiu    = new ImageIcon("images\\ikanhiu.png").getImage();
 	Image gameOverbkg= new ImageIcon("images\\menukalah.png").getImage();
 	Image tempbkg; //temporary background
 	
 	int x_cathard,y_cathard; //cathard x and y  coordinates
 	int x_ikanputih,y_ikanputih; // x and y coord of ikanputih
-    int x_ikanhiu,y_ikanhiu; // x and y coord of ikanhiu
+        int x_ikanhiu,y_ikanhiu; // x and y coord of ikanhiu
 	Random rand = new Random(); // for randomizing xcoord of ikanputihs
 	
-	JLabel time;
 	JLabel points;
 	JLabel soul;
 
 	int pointsCount = 0;
-	int timeleft = 100;
 	int counter  = 0;
 	int soulCount = 5;
 	
@@ -40,26 +38,26 @@ public class GamePanelHard extends JPanel {
 	
 	GamePanelHard(){
 		
-		setLayout(null);
-		setFocusable(true);
-		tempbkg = gamebkg;
+            setLayout(null);
+            setFocusable(true);
+            tempbkg = gamebkg;
 		
-		x_cathard = 450; y_cathard = 435;
-		x_ikanputih = (int)rand.nextInt(1000); y_ikanputih = 0;
-        x_ikanhiu = (int)rand.nextInt(1000); y_ikanhiu = 0;
+            x_cathard = 450; y_cathard = 435;
+            x_ikanputih = (int)rand.nextInt(1000); y_ikanputih = 0;
+            x_ikanhiu = (int)rand.nextInt(1000); y_ikanhiu = 0;
 		
-	    time = new JLabel("Time: 100");
-		time.setBounds(20, 10, 50, 20); //setting the time label on screen
-	    
 	    
 	    points = new JLabel("Points: 0");
-		points.setBounds(100,10,100,20);
+            points.setFont(new Font("Serif", Font.BOLD, 20));
+            points.setBounds(20,20,100,20);
+                
 		
-		soul = new JLabel ("Soul : 5");
-        soul.setBounds(200, 10, 150, 20);
+            soul = new JLabel ("Soul : 5");
+            soul.setFont(new Font("Serif", Font.BOLD, 20));
+            soul.setBounds(120, 20, 150, 20);
 
 		/*adding both components in jpanel*/
-		add(time);
+		
 		add(points);
 		add(soul);
 
@@ -100,15 +98,6 @@ public class GamePanelHard extends JPanel {
 		}
 		soul.setText("Soul: " +soulCount);
 	}
-	void updateTime(){
-		counter++;
-		if(counter == 100) //we count to 60 and then dec timeleft by 1 for slowing speed
-		{
-		   timeleft--;  //dec time left after 60 counts
-		   counter = 0; //reset counter
-		}
-		time.setText("Time:"+timeleft);
-	}
 	
 	void detectCollision(){
 		Rectangle cathardRect = new Rectangle(x_cathard,y_cathard,200,65); //making a rectangle on the cathard
@@ -131,7 +120,7 @@ public class GamePanelHard extends JPanel {
 	}//end collision detection
 
 	void checkGameOver(){
-		if(timeleft <= 0 || soulCount <= 0)
+		if(soulCount <= 0)
 		{
 			JLabel yourScore = new JLabel("Your SCORE :" + pointsCount);
 			tempbkg = gameOverbkg;
@@ -151,7 +140,6 @@ public class GamePanelHard extends JPanel {
 		if(gameOver == false){
 			setFocusable(true);
 			grabFocus();
-			updateTime();
 			fallikanputih();
             fallikanhiu();
 			detectCollision();

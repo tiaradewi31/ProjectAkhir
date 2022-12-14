@@ -35,4 +35,8 @@ public class Game extends JFrame {
 	setVisible(true);
 	setResizable(false);   //frame visibility    }
     }
+
+    
+
+   
 }
