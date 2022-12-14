@@ -91,7 +91,9 @@ public class ScoreDB{
             
             while(rs.next()){
                 allUser.add(new User(
-                            rs.getInt(1)));
+                            rs.getString(1),
+                            rs.getint(2)
+            ));
             }
         }catch (SQLException ex){
             System.err.println("Error Getting The Data: " + ex.getMessage());

@@ -100,13 +100,11 @@ public class GamePanelEasy extends JPanel {
 	void checkGameOver(){
 		if(soulCount <= 0)
 		{
-			Game g = new Game();
-                        JLabel yourScore = new JLabel();
-                        //g.save(yourScore);
+			JLabel yourScore = new JLabel("Your SCORE :" + pointsCount);
 			tempbkg = gameOverbkg;
-			yourScore.setBounds(600, 600, 200, 100);
+			yourScore.setBounds(500, 500, 200, 100);
 			gameOver = true;
-			yourScore.setForeground(Color.BLACK);
+			yourScore.setForeground(Color.RED);
 			add(yourScore);
 		}
 	}
