@@ -101,10 +101,11 @@ public class GamePanelEasy extends JPanel {
 		if(soulCount <= 0)
 		{
 			JLabel yourScore = new JLabel("Your SCORE :" + pointsCount);
+			yourScore.setFont(new Font("Serif", Font.BOLD, 20));
 			tempbkg = gameOverbkg;
-			yourScore.setBounds(500, 500, 200, 100);
+			yourScore.setBounds(600, 200, 200, 100);
 			gameOver = true;
-			yourScore.setForeground(Color.RED);
+			yourScore.setForeground(Color.black);
 			add(yourScore);
 		}
 	}

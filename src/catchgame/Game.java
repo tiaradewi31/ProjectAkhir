@@ -29,7 +29,7 @@ public class Game extends JFrame {
 	cl.show(cards, "MenuPanel");
 	add(cards); //adding the panel with cardlayout in JFrame
 		
-	setTitle("Catch The Eggs Game");
+	setTitle("Hungry Cat");
 	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	setSize(1280, 720); //frame size
 	setVisible(true);
