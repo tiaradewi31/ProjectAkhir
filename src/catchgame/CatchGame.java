@@ -15,5 +15,6 @@ public class CatchGame {
      */
     public static void main(String[] args) {
         Game g = new Game();
+        //ScoreDB db = new ScoreDB();
     }
 }

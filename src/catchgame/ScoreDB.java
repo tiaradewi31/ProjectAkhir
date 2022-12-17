@@ -28,7 +28,7 @@ public class ScoreDB{
     
     public ScoreDB(){
         
-        url = "jdbc:mysql://localhost/project";
+        url = "jdbc:mysql://localhost/projek";
         uname = "root";
         pass = "";
         this.setConnectionAndStatement();
@@ -36,7 +36,7 @@ public class ScoreDB{
     
     private void setConnectionAndStatement(){
         try {
-            con= DriverManager.getConnection(url,uname,pass);
+            con= DriverManager.getConnection(url, uname, pass);
             stmt = con.createStatement();//untuk memanfaatkan connection dalam membuat statemnt
             System.out.println("Koneksi berhasil");
         } catch (SQLException ex) {
@@ -45,12 +45,28 @@ public class ScoreDB{
         }
     }
 
-     public void save (User user, JLabel yourScore){
+    /*public void save (User user, JLabel yourScore){
         try{
             query = "INSERT INTO catchgame VALUES (%d)";
             query = String.format(
                     query,
                     user.getScore());
+            stmt.executeUpdate(query);//untuk memodifikasi tabel student (nambah variabel)
+            System.out.println("Berhasil menambahkan data!");
+        }catch (SQLException ex){
+            System.err.print("Error Inserting data: " + ex.getMessage());
+            System.exit(1);
+        }
+    }*/
+    
+    public void save (String nama, int score){
+        try{
+            query = "INSERT INTO catchgame VALUES ('%s', %d)";
+            query = String.format(
+                    query,
+                    nama,
+                    score);
+            System.out.println(query);
             stmt.executeUpdate(query);//untuk memodifikasi tabel student (nambah variabel)
             System.out.println("Berhasil menambahkan data!");
         }catch (SQLException ex){

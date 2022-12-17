@@ -16,118 +16,116 @@ import java.util.*;
 
 public class GamePanelMedium extends JPanel {
     Image gamebkg = new ImageIcon("images\\menuplay.png").getImage();
-	Image catmedium  = new ImageIcon("images\\catmedium.png").getImage();
-	Image ikanputih     = new ImageIcon("images\\ikanputih.png").getImage();
-	Image gameOverbkg= new ImageIcon("images\\menukalah.png").getImage();
-	Image tempbkg; //temporary background
-	
-	int x_catmedium,y_catmedium; //catmedium x and y  coordinates
-	int x_ikanputih,y_ikanputih; // x and y coord of ikanputih
-	Random rand = new Random(); // for randomizing xcoord of ikanputihs
-	
-	JLabel points;
-	JLabel soul;
-	
-	int pointsCount = 0;
-	int counter  = 0;
-	int soulCount = 5;
-	
-	boolean gameOver = false;
-	
-	GamePanelMedium(){
-		
-		setLayout(null);
-		setFocusable(true);
-		tempbkg = gamebkg;
-		
-		x_catmedium = 450; y_catmedium = 445;
-		x_ikanputih = (int)rand.nextInt(1000); y_ikanputih = 0;
-		
-                points = new JLabel("Points: 0");
-                points.setFont(new Font("Serif", Font.BOLD, 20));
-		points.setBounds(20,20,100,20);
-                
-		
-		soul = new JLabel ("Soul : 5");
-                soul.setFont(new Font("Serif", Font.BOLD, 20));
-                soul.setBounds(120, 20, 150, 20);    
-		
-		/*adding both components in jpanel*/
-		add(points);
-		add(soul);
-		
-		addKeyListener(new KeyAdapter(){
-			public void keyPressed(KeyEvent ke){
-				
-				if(ke.getKeyCode() == ke.VK_LEFT & x_catmedium>10){
-					x_catmedium-=50;
-					repaint(); // redraw at new position
-				}
-				if(ke.getKeyCode() == ke.VK_RIGHT & x_catmedium<1050){
-					x_catmedium+=50; // redraw at new position
-					repaint();
-				}
-			}//end keypressed
-		});	
-	}//end constructor
-	
-	void fallikanputih(){
-		if(y_ikanputih >=505){
-			y_ikanputih = 0;
-			x_ikanputih = rand.nextInt(1000); //posisi telur jatuh
-			soulCount --;
-		}
-		else{
-			y_ikanputih+=2; //ngatur kecepatan telur
-		}
-		soul.setText("Soul: " +soulCount);
-	}
-	
-	void detectCollision(){
-		Rectangle catmediumRect = new Rectangle(x_catmedium,y_catmedium,200,65); //making a rectangle on the catmedium
-		Rectangle ikanputihRect    = new Rectangle(x_ikanputih,y_ikanputih,45,67); //making a rectangle on ikanputih
-		
-		if(ikanputihRect.intersects(catmediumRect)){
-			pointsCount+=5; // give 5 points on each catch
-			points.setText("Points:"+pointsCount); // set the count
-			y_ikanputih = 0; // for next ikanputih
-			x_ikanputih = rand.nextInt(1000); // again randomizing x axis of ikanputih
-		}
+    Image catmedium = new ImageIcon("images\\catmedium.png").getImage();
+    Image ikanputih = new ImageIcon("images\\ikanputih.png").getImage();
+    Image gameOverbkg = new ImageIcon("images\\menukalah.png").getImage();
+    Image tempbkg; //temporary background
 
-	}//end collision detection
+    int x_catmedium, y_catmedium; //catmedium x and y  coordinates
+    int x_ikanputih, y_ikanputih; // x and y coord of ikanputih
+    Random rand = new Random(); // for randomizing xcoord of ikanputihs
 
-	void checkGameOver(){
-		if(soulCount <= 0)
-		{
-			JLabel yourScore = new JLabel("Your SCORE :" + pointsCount);
-			yourScore.setFont(new Font("Serif", Font.BOLD, 20));
-			tempbkg = gameOverbkg;
-			yourScore.setBounds(600, 200, 200, 100);
-			gameOver = true;
-			yourScore.setForeground(Color.black);
-			add(yourScore);
-		}
-	}
+    JLabel points;
+    JLabel soul;
+
+    int pointsCount = 0;
+    int counter = 0;
+    int soulCount = 5;
+    boolean gameOver = false;
+
+    GamePanelMedium() {
+        setLayout(null);
+        setFocusable(true);
+        tempbkg = gamebkg;
+        x_catmedium = 450;
+        y_catmedium = 445;
+        x_ikanputih = (int) rand.nextInt(1000);
+        y_ikanputih = 0;
+
+        points = new JLabel("Points: 0");
+        points.setFont(new Font("Serif", Font.BOLD, 20));
+        points.setBounds(20, 20, 100, 20);
+
+        soul = new JLabel("Soul : 5");
+        soul.setFont(new Font("Serif", Font.BOLD, 20));
+        soul.setBounds(120, 20, 150, 20);
+
+        /*adding both components in jpanel*/
+        add(points);
+        add(soul);
+
+        addKeyListener(new KeyAdapter() {
+            public void keyPressed(KeyEvent ke) {
+
+                if (ke.getKeyCode() == ke.VK_LEFT & x_catmedium > 10) {
+                    x_catmedium -= 50;
+                    repaint(); // redraw at new position
+                }
+                if (ke.getKeyCode() == ke.VK_RIGHT & x_catmedium < 1050) {
+                    x_catmedium += 50; // redraw at new position
+                    repaint();
+                }
+            }//end keypressed
+        });
+    }//end constructor
 	
-	public void paintComponent(Graphics g){
-		super.paintComponent(g);
-		Graphics2D g2d = (Graphics2D)g;
-		g2d.drawImage(tempbkg,0,0,null); //game background
-		checkGameOver();
-		
-		if(gameOver == false){
-			setFocusable(true);
-			grabFocus();
-			
-			fallikanputih();
-			detectCollision();
+    void fallikanputih() {
+        if (y_ikanputih >= 505) {
+            y_ikanputih = 0;
+            x_ikanputih = rand.nextInt(1000); //posisi telur jatuh
+            soulCount--;
+        } else {
+            y_ikanputih += 2; //ngatur kecepatan telur
+        }
+        soul.setText("Soul: " + soulCount);
+    }
+	
+    void detectCollision() {
+        Rectangle catmediumRect = new Rectangle(x_catmedium, y_catmedium, 200, 65); //making a rectangle on the catmedium
+        Rectangle ikanputihRect = new Rectangle(x_ikanputih, y_ikanputih, 45, 67); //making a rectangle on ikanputih
 
-			g2d.drawImage(ikanputih, x_ikanputih, y_ikanputih,null); //drawing ikanputih at new position
+        if (ikanputihRect.intersects(catmediumRect)) {
+            pointsCount += 5; // give 5 points on each catch
+            points.setText("Points:" + pointsCount); // set the count
+            y_ikanputih = 0; // for next ikanputih
+            x_ikanputih = rand.nextInt(1000); // again randomizing x axis of ikanputih
+        }
+
+    }//end collision detection
+
+    void checkGameOver() {
+        if (soulCount <= 0) {
+            gameOver = true;
+        }
+    }
+	
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        Graphics2D g2d = (Graphics2D) g;
+        g2d.drawImage(tempbkg, 0, 0, null); //game background
+        checkGameOver();
+
+        if (gameOver == false) {
+            setFocusable(true);
+            grabFocus();
+
+            fallikanputih();
+            detectCollision();
+
+            g2d.drawImage(ikanputih, x_ikanputih, y_ikanputih, null); //drawing ikanputih at new position
             //g2d.drawImage(ayam, x_ayam, y_ayam,null); //drawing ikanputih at new position
-			g2d.drawImage(catmedium, x_catmedium, y_catmedium, null); //drawing catmedium
-		}
-		
-		repaint();	
-	}//end paintComponent
+            g2d.drawImage(catmedium, x_catmedium, y_catmedium, null); //drawing catmedium
+            repaint();
+        } else {
+            JLabel yourScore = new JLabel("Your SCORE :" + pointsCount);
+            yourScore.setFont(new Font("Serif", Font.BOLD, 20));
+            tempbkg = gameOverbkg;
+            yourScore.setBounds(600, 200, 200, 100);
+            yourScore.setForeground(Color.black);
+            add(yourScore);
+            ScoreDB db = new ScoreDB();
+            db.save("ooooo", pointsCount);
+        }
+    }//end paintComponent
 }//end class
 
