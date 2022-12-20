@@ -128,6 +128,7 @@ public class GamePanelHard extends JPanel {
             Graphics2D g2d = (Graphics2D) g;
             g2d.drawImage(tempbkg, 0, 0, null); //game background
             checkGameOver();
+            
 
             if (gameOver == false) {
                 setFocusable(true);
@@ -139,16 +140,16 @@ public class GamePanelHard extends JPanel {
                 g2d.drawImage(ikanputih, x_ikanputih, y_ikanputih, null); //drawing ikanputih at new position
                 g2d.drawImage(ikanhiu, x_ikanhiu, y_ikanhiu, null); //drawing ikanputih at new position
                 g2d.drawImage(cathard, x_cathard, y_cathard, null); //drawing cathard
-                repaint();
-            } else {
-                JLabel yourScore = new JLabel("Your SCORE :" + pointsCount);
-                yourScore.setFont(new Font("Serif", Font.BOLD, 20));
+                repaint();           
+            } else {             
                 tempbkg = gameOverbkg;
-                yourScore.setBounds(500, 200, 200, 100);
+                JLabel yourScore = new JLabel("Your SCORE :" + pointsCount);                
+                yourScore.setFont(new Font("Serif", Font.BOLD, 20));            
+                yourScore.setBounds(550, 50, 200, 100);
                 yourScore.setForeground(Color.black);
-                add(yourScore);
+                add(yourScore);            
                 ScoreDB db = new ScoreDB();
-                db.save("Alhamdulillah", pointsCount);
+                db.save("yok", pointsCount);
             }
 	}//end paintComponent
 }//end class
