@@ -5,10 +5,6 @@
  */
 package catchgame;
 
-/**
- *
- * @author LENOVO
- */
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -23,7 +19,7 @@ public class GamePanelMedium extends JPanel {
 
     int x_catmedium, y_catmedium; //catmedium x and y  coordinates
     int x_ikanputih, y_ikanputih; // x and y coord of ikanputih
-    Random rand = new Random(); // for randomizing xcoord of ikanputihs
+    Random rand = new Random(); // for randomizing xcoord of ikanputih
 
     JLabel points;
     JLabel soul;
@@ -72,13 +68,13 @@ public class GamePanelMedium extends JPanel {
     void fallikanputih() {
         if (y_ikanputih >= 505) {
             y_ikanputih = 0;
-            x_ikanputih = rand.nextInt(1000); //posisi telur jatuh
+            x_ikanputih = rand.nextInt(1000); //posisi ikanputih jatuh
             soulCount--;
         } else {
-            y_ikanputih += 2; //ngatur kecepatan telur
+            y_ikanputih += 2; //ngatur kecepatan ikanputih
         }
         soul.setText("Soul: " + soulCount);
-    }
+    }//end kecepatan ikanputih
 	
     void detectCollision() {
         Rectangle catmediumRect = new Rectangle(x_catmedium, y_catmedium, 200, 65); //making a rectangle on the catmedium
@@ -113,14 +109,13 @@ public class GamePanelMedium extends JPanel {
             detectCollision();
 
             g2d.drawImage(ikanputih, x_ikanputih, y_ikanputih, null); //drawing ikanputih at new position
-            //g2d.drawImage(ayam, x_ayam, y_ayam,null); //drawing ikanputih at new position
             g2d.drawImage(catmedium, x_catmedium, y_catmedium, null); //drawing catmedium
             repaint();
         } else {
             JLabel yourScore = new JLabel("Your SCORE :" + pointsCount);
             yourScore.setFont(new Font("Serif", Font.BOLD, 20));
             tempbkg = gameOverbkg;
-            yourScore.setBounds(600, 200, 200, 100);
+            yourScore.setBounds(550, 50, 200, 100);
             yourScore.setForeground(Color.black);
             add(yourScore);
             ScoreDB db = new ScoreDB();
@@ -128,4 +123,3 @@ public class GamePanelMedium extends JPanel {
         }
     }//end paintComponent
 }//end class
-
