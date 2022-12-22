@@ -45,6 +45,10 @@ public class MenuPanel extends JPanel {
         public void mouseClicked(MouseEvent me) {
             if (me.getSource() == play) {
                 Game.cl.show(Game.cards, "LevelPanel"); //show gamePanel when play is clicked
+//                int nama;
+//                JFrame jFrame = new JFrame();
+//                String getMessage = JOptionPane.showInputDialog("Masukkan Nama Anda");
+//                jFrame.setName(getMessage);
             }
             if (me.getSource() == help) {
                 Game.cl.show(Game.cards, "HelpPanel"); //show helpPanel when help is clicked

@@ -160,7 +160,7 @@ public class GamePanelHard extends JPanel {
                 yourScore.setForeground(Color.black);
                 add(yourScore);            
                 ScoreDB db = new ScoreDB();
-                db.save("yok", pointsCount);
+                db.save("", pointsCount);
             }
 	}//end paintComponent
 }//end class
