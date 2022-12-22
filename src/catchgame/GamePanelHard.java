@@ -120,17 +120,27 @@ public class GamePanelHard extends JPanel {
 	void checkGameOver() {
             if (soulCount <= 0) {
                 gameOver = true;
+                //tempbkg = gameOverbkg;
+                /*JLabel yourScore = new JLabel("Your SCORE :" + pointsCount);                
+                yourScore.setFont(new Font("Serif", Font.BOLD, 20));            
+                yourScore.setBounds(550, 50, 200, 100);
+                yourScore.setForeground(Color.black);
+                add(yourScore);            
+                ScoreDB db = new ScoreDB();
+                db.save("yok", pointsCount);
+                ArrayList<User> allUser = db.getAll();*/
             }
         }
 	
 	public void paintComponent(Graphics g){
             super.paintComponent(g);
             Graphics2D g2d = (Graphics2D) g;
-            g2d.drawImage(tempbkg, 0, 0, null); //game background
+            
             checkGameOver();
             
 
             if (gameOver == false) {
+                g2d.drawImage(tempbkg, 0, 0, null); //game background
                 setFocusable(true);
                 grabFocus();
                 fallikanputih();
@@ -141,8 +151,9 @@ public class GamePanelHard extends JPanel {
                 g2d.drawImage(ikanhiu, x_ikanhiu, y_ikanhiu, null); //drawing ikanputih at new position
                 g2d.drawImage(cathard, x_cathard, y_cathard, null); //drawing cathard
                 repaint();           
-            } else {             
-                tempbkg = gameOverbkg;
+            } else {          
+                g2d.drawImage(gameOverbkg, 0, 0, null);
+                //tempbkg = gameOverbkg;
                 JLabel yourScore = new JLabel("Your SCORE :" + pointsCount);                
                 yourScore.setFont(new Font("Serif", Font.BOLD, 20));            
                 yourScore.setBounds(550, 50, 200, 100);

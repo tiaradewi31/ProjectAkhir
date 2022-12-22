@@ -74,6 +74,27 @@ public class ScoreDB{
             System.exit(1);
         }
     }
+    
+    public ArrayList<User> getAll(){
+        ArrayList<User> allUser = new ArrayList<>();
+        
+        try{
+            query = "SELECT * FROM catchgame ORDER BY score LIMIT 10";
+            ResultSet rs = stmt.executeQuery(query);
+            
+            while(rs.next()){
+                allUser.add(new User(
+                            rs.getString(1),
+                            rs.getInt(2)
+            ));
+            }
+        }catch (SQLException ex){
+            System.err.println("Error Getting The Data: " + ex.getMessage());
+            System.exit(1);
+        }
+        return allUser;   
+
+    }
 
     /*public Game get() {
         int score = 0;

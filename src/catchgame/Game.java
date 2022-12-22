@@ -33,6 +33,6 @@ public class Game extends JFrame {
 	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	setSize(1280, 720); //frame size
 	setVisible(true);
-	setResizable(false);   //frame visibility    }
+	setResizable(false); //frame visibility    }
     }
 }

@@ -14,7 +14,7 @@ public class User {
     private String nama;
     private int score;
 
-    public User(int score) {
+    public User(String nama, int score) {
         this.nama = "";
         this.score = 0;
     }
