@@ -5,8 +5,12 @@
  */
 package catchgame;
 
+import inputs.SoundHandler;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.sound.sampled.LineUnavailableException;
 import javax.swing.*;
 
 public class LevelPanel extends JPanel {
@@ -50,10 +54,32 @@ public class LevelPanel extends JPanel {
 
         public void mouseClicked(MouseEvent me) {
             if (me.getSource() == easy) {
+                try {    
+                    SoundHandler.RunMusic("Res/button2.wav");
+                } catch (LineUnavailableException ex) {
+                    Logger.getLogger(LevelPanel.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 Game.cl.show(Game.cards, "GamePanelEasy"); //show gamePanel when play is clicked
-            }if (me.getSource() == medium) {
+//                try {
+//                    SoundHandler.RunMusic("Res/play.wav");
+//                } catch (LineUnavailableException ex) {
+//                    Logger.getLogger(LevelPanel.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+            }
+            if (me.getSource() == medium) {
+                try {    
+                    SoundHandler.RunMusic("Res/button2.wav");
+                } catch (LineUnavailableException ex) {
+                    Logger.getLogger(LevelPanel.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 Game.cl.show(Game.cards, "GamePanelMedium"); //show gamePanel when play is clicked
-            }if (me.getSource() == hard) {
+            }
+            if (me.getSource() == hard) {
+                try {    
+                    SoundHandler.RunMusic("Res/button2.wav");
+                } catch (LineUnavailableException ex) {
+                    Logger.getLogger(LevelPanel.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 Game.cl.show(Game.cards, "GamePanelHard"); //show gamePanel when play is clicked
             }
             

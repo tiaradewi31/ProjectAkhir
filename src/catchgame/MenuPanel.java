@@ -4,9 +4,20 @@
  */
 package catchgame;
 
+import inputs.SoundHandler;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.sound.sampled.LineUnavailableException;
 import javax.swing.*;
+import sun.audio.AudioPlayer;
+import sun.audio.AudioStream;
+
 
 public class MenuPanel extends JPanel {
 
@@ -38,6 +49,11 @@ public class MenuPanel extends JPanel {
         help.addMouseListener(new Click());
         exit.addMouseListener(new Click());
 
+        try {
+            SoundHandler.RunMusic("Res/menu.wav");
+        } catch (LineUnavailableException ex) {
+            Logger.getLogger(MenuPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//end constructor
 
     class Click extends MouseAdapter { //internal friendly class
@@ -45,6 +61,11 @@ public class MenuPanel extends JPanel {
         public void mouseClicked(MouseEvent me) {
             if (me.getSource() == play) {
                 Game.cl.show(Game.cards, "LevelPanel"); //show gamePanel when play is clicked
+                try {
+                   SoundHandler.RunMusic("Res/button1.wav");
+               } catch (LineUnavailableException ex) {
+                   Logger.getLogger(MenuPanel.class.getName()).log(Level.SEVERE, null, ex);
+               }               
 //                int nama;
 //                JFrame jFrame = new JFrame();
 //                String getMessage = JOptionPane.showInputDialog("Masukkan Nama Anda");
@@ -52,9 +73,19 @@ public class MenuPanel extends JPanel {
             }
             if (me.getSource() == help) {
                 Game.cl.show(Game.cards, "HelpPanel"); //show helpPanel when help is clicked
+                try {
+                   SoundHandler.RunMusic("Res/button1.wav");
+               } catch (LineUnavailableException ex) {
+                   Logger.getLogger(MenuPanel.class.getName()).log(Level.SEVERE, null, ex);
+               }
             }
             if (me.getSource() == exit) {
                 System.exit(0);  //exit application when exit is clicked
+                try {
+                   SoundHandler.RunMusic("Res/button1.wav");
+               } catch (LineUnavailableException ex) {
+                   Logger.getLogger(MenuPanel.class.getName()).log(Level.SEVERE, null, ex);
+               }
             }
         }//end mouseClick
     }//end mouseAdapter

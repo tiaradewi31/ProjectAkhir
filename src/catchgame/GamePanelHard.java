@@ -9,10 +9,18 @@ package catchgame;
  *
  * @author LENOVO
  */
+import inputs.SoundHandler;
+import java.awt.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.event.*;
+import javax.swing.*;
 import javax.swing.*;
 import java.util.*;
+import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.sound.sampled.LineUnavailableException;
 
 public class GamePanelHard extends JPanel {
     Image gamebkg = new ImageIcon("images\\menuplay.png").getImage();
@@ -105,6 +113,11 @@ public class GamePanelHard extends JPanel {
             if (ikanputihRect.intersects(cathardRect)) {
                 pointsCount += 5; // give 5 points on each catch
                 points.setText("Points:" + pointsCount); // set the count
+                    try {
+                        SoundHandler.RunMusic("Res/meow.wav");
+                    } catch (LineUnavailableException ex) {
+                        Logger.getLogger(GamePanelEasy.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 y_ikanputih = 0; // for next ikanputih
                 x_ikanputih = rand.nextInt(1000); // again randomizing x axis of ikanputih
             }
@@ -112,6 +125,11 @@ public class GamePanelHard extends JPanel {
             if (ikanhiuRect.intersects(cathardRect)) {
                 pointsCount += 10; // give 5 points on each catch
                 points.setText("Points:" + pointsCount); // set the count
+                    try {
+                        SoundHandler.RunMusic("Res/meow.wav");
+                    } catch (LineUnavailableException ex) {
+                        Logger.getLogger(GamePanelEasy.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 y_ikanhiu = 0; // for next ikanputih
                 x_ikanhiu = rand.nextInt(1000); // again randomizing x axis of ikanputih
             }

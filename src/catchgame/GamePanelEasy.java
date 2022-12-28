@@ -4,10 +4,15 @@
  */
 package catchgame;
 
+import inputs.SoundHandler;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.sound.sampled.LineUnavailableException;
+
 
 public class GamePanelEasy extends JPanel {
     Image gamebkg = new ImageIcon("images\\menuplay.png").getImage();
@@ -85,6 +90,11 @@ public class GamePanelEasy extends JPanel {
             if (ikankuningRect.intersects(cateasyRect)) {
                 pointsCount += 2; // give 5 points on each catch
                 points.setText("Points:" + pointsCount); // set the count
+                    try {
+                        SoundHandler.RunMusic("Res/meow.wav");
+                    } catch (LineUnavailableException ex) {
+                        Logger.getLogger(GamePanelEasy.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 y_ikankuning = 0; // for next ikankuning
                 x_ikankuning = rand.nextInt(1000); // again randomizing x axis of ikankuning
             }

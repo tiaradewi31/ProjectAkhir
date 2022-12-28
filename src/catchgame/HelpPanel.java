@@ -4,8 +4,12 @@
  */
 package catchgame;
 
+import inputs.SoundHandler;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.sound.sampled.LineUnavailableException;
 import javax.swing.*;
 
 
@@ -21,6 +25,11 @@ public class HelpPanel extends JPanel {
         back.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent me) {
                 Game.cl.show(Game.cards, "MenuPanel"); // show menuPanel when back button is clicked
+                try {
+                    SoundHandler.RunMusic("Res/button1.wav");
+                } catch (LineUnavailableException ex) {
+                    Logger.getLogger(HelpPanel.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }//end constructor
