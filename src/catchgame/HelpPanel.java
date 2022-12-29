@@ -17,6 +17,8 @@ public class HelpPanel extends JPanel {
 
     Image helpbkg = new ImageIcon("images\\menuhelp.png").getImage(); //help image background
     JButton back = new JButton("Back"); //back button
+    
+    SoundHandler shButton;
 
     HelpPanel() {
         setFocusable(true); //setting the focus
@@ -26,7 +28,9 @@ public class HelpPanel extends JPanel {
             public void mouseClicked(MouseEvent me) {
                 Game.cl.show(Game.cards, "MenuPanel"); // show menuPanel when back button is clicked
                 try {
-                    SoundHandler.RunMusic("Res/button1.wav");
+//                    SoundHandler.RunMusic("Res/button1.wav");
+                        shButton = new SoundHandler();
+                        shButton.RunMusic("Res/button1.wav");
                 } catch (LineUnavailableException ex) {
                     Logger.getLogger(HelpPanel.class.getName()).log(Level.SEVERE, null, ex);
                 }

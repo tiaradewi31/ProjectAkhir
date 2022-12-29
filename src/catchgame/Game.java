@@ -10,7 +10,7 @@ import javax.swing.*;
 public class Game extends JFrame {
     static MenuPanel mp = new MenuPanel();
     static HelpPanel hp = new HelpPanel();
-    static LevelPanel lp = new LevelPanel();
+    static LevelPanel lp = new LevelPanel(mp);
     static GamePanelEasy gpe = new GamePanelEasy();
     static GamePanelMedium gpm = new GamePanelMedium();
     static GamePanelHard gph = new GamePanelHard();

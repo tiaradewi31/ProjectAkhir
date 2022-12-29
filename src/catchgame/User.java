@@ -15,8 +15,8 @@ public class User {
     private int score;
 
     public User(String nama, int score) {
-        this.nama = "";
-        this.score = 0;
+        this.nama = nama;
+        this.score = score;
     }
 
     public String getNama() {

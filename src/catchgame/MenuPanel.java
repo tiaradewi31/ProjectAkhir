@@ -31,12 +31,10 @@ public class MenuPanel extends JPanel {
     ImageIcon playbtn = new ImageIcon("buttons\\play.png");
     ImageIcon helpbtn = new ImageIcon("buttons\\help.png");
     ImageIcon exitbtn = new ImageIcon("buttons\\EXIT (2).png");
-    
-    JPanel center = new JPanel();
+    SoundHandler shButton;
+    SoundHandler shMenu;
 
     MenuPanel() {
-        center.setLayout(new BoxLayout(center,BoxLayout.LINE_AXIS)); //setting box layout 
-        add(center); //adding the panel to anothe JPanel
 
         /* setting icons on buttons */
         play.setIcon(playbtn);
@@ -44,9 +42,9 @@ public class MenuPanel extends JPanel {
         exit.setIcon(exitbtn);
 
         /* adding the buttons in the panel */
-        center.add(play);
-        center.add(help);
-        center.add(exit);
+        add(play);
+        add(help);
+        add(exit);
 
         /* adding mouseListeners on buttons */
         play.addMouseListener(new Click());
@@ -54,7 +52,8 @@ public class MenuPanel extends JPanel {
         exit.addMouseListener(new Click());
 
         try {
-            SoundHandler.RunMusic("Res/menu.wav");
+            shMenu = new SoundHandler();
+            shMenu.RunMusic("Res/menu.wav");
         } catch (LineUnavailableException ex) {
             Logger.getLogger(MenuPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -65,8 +64,11 @@ public class MenuPanel extends JPanel {
         public void mouseClicked(MouseEvent me) {
             if (me.getSource() == play) {
                 Game.cl.show(Game.cards, "LevelPanel"); //show gamePanel when play is clicked
+//                LevelPanel lp = new LevelPanel(this);
                 try {
-                   SoundHandler.RunMusic("Res/button1.wav");
+                   shButton = new SoundHandler();
+                   shButton.RunMusic("Res/button1.wav");
+                   //shMenu.StopMusic();
                } catch (LineUnavailableException ex) {
                    Logger.getLogger(MenuPanel.class.getName()).log(Level.SEVERE, null, ex);
                }               
@@ -78,7 +80,8 @@ public class MenuPanel extends JPanel {
             if (me.getSource() == help) {
                 Game.cl.show(Game.cards, "HelpPanel"); //show helpPanel when help is clicked
                 try {
-                   SoundHandler.RunMusic("Res/button1.wav");
+                   shButton = new SoundHandler();
+                   shButton.RunMusic("Res/button1.wav");
                } catch (LineUnavailableException ex) {
                    Logger.getLogger(MenuPanel.class.getName()).log(Level.SEVERE, null, ex);
                }
@@ -86,7 +89,8 @@ public class MenuPanel extends JPanel {
             if (me.getSource() == exit) {
                 System.exit(0);  //exit application when exit is clicked
                 try {
-                   SoundHandler.RunMusic("Res/button1.wav");
+                   shButton = new SoundHandler();
+                   shButton.RunMusic("Res/button1.wav");
                } catch (LineUnavailableException ex) {
                    Logger.getLogger(MenuPanel.class.getName()).log(Level.SEVERE, null, ex);
                }

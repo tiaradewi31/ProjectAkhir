@@ -21,24 +21,31 @@ import javax.sound.sampled.UnsupportedAudioFileException;
  */
 public class SoundHandler {
     
-    public static void RunMusic(String path) throws LineUnavailableException{
+    Clip clip;
+    
+    public SoundHandler() {
+        try {
+            this.clip = AudioSystem.getClip();
+        } catch (LineUnavailableException ex) {
+            Logger.getLogger(SoundHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void RunMusic(String path) throws LineUnavailableException{
         try {
             AudioInputStream inputStream = AudioSystem.getAudioInputStream(new File(path));
-            Clip clip = AudioSystem.getClip();
+            //Clip clip = AudioSystem.getClip();
             clip.open(inputStream);
             clip.loop(0);
-        } catch (UnsupportedAudioFileException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (LineUnavailableException e) {
+        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
             e.printStackTrace();
         }
-         
     }
 
-    public static void StopMusic(String resplaywav) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void StopMusic() {
+        clip.stop();
     }
+
+   
     
 }

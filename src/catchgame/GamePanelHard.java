@@ -37,6 +37,8 @@ public class GamePanelHard extends JPanel {
 
     JLabel points;
     JLabel soul;
+    
+    SoundHandler shButton;
 
     int pointsCount = 0;
     int counter = 0;
@@ -114,7 +116,9 @@ public class GamePanelHard extends JPanel {
                 pointsCount += 5; // give 5 points on each catch
                 points.setText("Points:" + pointsCount); // set the count
                     try {
-                        SoundHandler.RunMusic("Res/meow.wav");
+//                        SoundHandler.RunMusic("Res/meow.wav");
+                        shButton = new SoundHandler();
+                        shButton.RunMusic("Res/meow.wav");
                     } catch (LineUnavailableException ex) {
                         Logger.getLogger(GamePanelEasy.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -126,7 +130,9 @@ public class GamePanelHard extends JPanel {
                 pointsCount += 10; // give 5 points on each catch
                 points.setText("Points:" + pointsCount); // set the count
                     try {
-                        SoundHandler.RunMusic("Res/meow.wav");
+//                        SoundHandler.RunMusic("Res/meow.wav");
+                        shButton = new SoundHandler();
+                        shButton.RunMusic("Res/meow.wav");
                     } catch (LineUnavailableException ex) {
                         Logger.getLogger(GamePanelEasy.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -138,25 +144,14 @@ public class GamePanelHard extends JPanel {
 	void checkGameOver() {
             if (soulCount <= 0) {
                 gameOver = true;
-                //tempbkg = gameOverbkg;
-                /*JLabel yourScore = new JLabel("Your SCORE :" + pointsCount);                
-                yourScore.setFont(new Font("Serif", Font.BOLD, 20));            
-                yourScore.setBounds(550, 50, 200, 100);
-                yourScore.setForeground(Color.black);
-                add(yourScore);            
-                ScoreDB db = new ScoreDB();
-                db.save("yok", pointsCount);
-                ArrayList<User> allUser = db.getAll();*/
             }
         }
 	
 	public void paintComponent(Graphics g){
             super.paintComponent(g);
-            Graphics2D g2d = (Graphics2D) g;
-            
+            Graphics2D g2d = (Graphics2D) g;            
             checkGameOver();
             
-
             if (gameOver == false) {
                 g2d.drawImage(tempbkg, 0, 0, null); //game background
                 setFocusable(true);
@@ -171,14 +166,22 @@ public class GamePanelHard extends JPanel {
                 repaint();           
             } else {          
                 g2d.drawImage(gameOverbkg, 0, 0, null);
-                //tempbkg = gameOverbkg;
                 JLabel yourScore = new JLabel("Your SCORE :" + pointsCount);                
                 yourScore.setFont(new Font("Serif", Font.BOLD, 20));            
                 yourScore.setBounds(550, 50, 200, 100);
                 yourScore.setForeground(Color.black);
                 add(yourScore);            
                 ScoreDB db = new ScoreDB();
-                db.save("", pointsCount);
+                db.save("syulit", pointsCount);
+                ArrayList<User> allUser = db.getAll();
+                for(User s : allUser){
+                    JLabel nama = new JLabel(" " + s.getNama());                
+                    nama.setFont(new Font("Serif", Font.BOLD, 10));     
+                    nama.setBounds(550, 90, 200, 100);
+                    JLabel score = new JLabel( " " + s.getScore());                
+                    score.setFont(new Font("Serif", Font.BOLD, 10));     
+                    score.setBounds(550, 100, 200, 100);
+                }
             }
 	}//end paintComponent
 }//end class

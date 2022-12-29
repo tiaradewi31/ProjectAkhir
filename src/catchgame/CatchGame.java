@@ -4,6 +4,10 @@
  */
 package catchgame;
 
+import java.awt.Font;
+import java.util.ArrayList;
+import javax.swing.JLabel;
+
 /**
  *
  * @author HP
@@ -15,6 +19,11 @@ public class CatchGame {
      */
     public static void main(String[] args) {
         Game g = new Game();
-        //ScoreDB db = new ScoreDB();
+//        ScoreDB db = new ScoreDB();
+//        ArrayList<User> allUser = db.getAll();
+//        for (User s : allUser) {
+//            System.out.println(s.getNama());
+//            System.out.println(s.getScore());
+//        }
     }
 }

@@ -83,6 +83,7 @@ public class ScoreDB{
             ResultSet rs = stmt.executeQuery(query);
             
             while(rs.next()){
+                System.out.println("data berhasil diambil");
                 allUser.add(new User(
                             rs.getString(1),
                             rs.getInt(2)
@@ -96,28 +97,28 @@ public class ScoreDB{
 
     }
 
-    /*public Game get() {
-        int score = 0;
-        Game game = null;
-        
-        try{
-            query = "SELECT * FROM catchgame ORDER BY score LIMIT 10";
-            query = String.format(query, score);
-            ResultSet rs = stmt.executeQuery(query);
-            
-            if(rs.next() != false){
-                game = new Game(
-                            rs.getInt("score"));
-            }else{
-                System.out.println("Data Tidak Ditemukan.");
-                System.exit(0);
-            }
-        }catch(SQLException ex){
-            System.err.println("Error Getting The Data: " + ex.getMessage());
-            System.exit(1);
-        }
-        return game;    
-    }*/
+//    public User get() {
+//        int score = 0;
+//        User user = null;
+//        
+//        try{
+//            query = "SELECT * FROM catchgame ORDER BY score DESC LIMIT 10";
+//            //query = String.format(query, score);
+//            ResultSet rs = stmt.executeQuery(query);
+//            
+//            if(rs.next() != false){
+//                String s = rs.getString("nama");
+//                           rs.getInt("score");
+//            }else{
+//                System.out.println("Data Tidak Ditemukan.");
+//                System.exit(0);
+//            }
+//        }catch(SQLException ex){
+//            System.err.println("Error Getting The Data: " + ex.getMessage());
+//            System.exit(1);
+//        }
+//        return user;    
+//    }
     
     /*public ArrayList<User> getAll(){
         ArrayList<User> User = new ArrayList<>();

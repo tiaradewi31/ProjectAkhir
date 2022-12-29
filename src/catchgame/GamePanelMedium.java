@@ -31,6 +31,8 @@ public class GamePanelMedium extends JPanel {
 
     JLabel points;
     JLabel soul;
+    
+    SoundHandler shButton;
 
     int pointsCount = 0;
     int counter = 0;
@@ -79,7 +81,7 @@ public class GamePanelMedium extends JPanel {
             x_ikanputih = rand.nextInt(1000); //posisi ikanputih jatuh
             soulCount--;
         } else {
-            y_ikanputih += 2; //ngatur kecepatan ikanputih
+            y_ikanputih += 3; //ngatur kecepatan ikanputih
         }
         soul.setText("Soul: " + soulCount);
     }//end kecepatan ikanputih
@@ -92,7 +94,10 @@ public class GamePanelMedium extends JPanel {
             pointsCount += 5; // give 5 points on each catch
             points.setText("Points:" + pointsCount); // set the count
                     try {
-                        SoundHandler.RunMusic("Res/meow.wav");
+//                        SoundHandler.RunMusic("Res/meow.wav");
+                        shButton = new SoundHandler();
+                        shButton.RunMusic("Res/meow.wav");
+
                     } catch (LineUnavailableException ex) {
                         Logger.getLogger(GamePanelEasy.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -111,10 +116,10 @@ public class GamePanelMedium extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
-        g2d.drawImage(tempbkg, 0, 0, null); //game background
         checkGameOver();
 
         if (gameOver == false) {
+            g2d.drawImage(tempbkg, 0, 0, null); //game background            
             setFocusable(true);
             grabFocus();
 
@@ -125,14 +130,23 @@ public class GamePanelMedium extends JPanel {
             g2d.drawImage(catmedium, x_catmedium, y_catmedium, null); //drawing catmedium
             repaint();
         } else {
+            g2d.drawImage(gameOverbkg, 0, 0, null);
             JLabel yourScore = new JLabel("Your SCORE :" + pointsCount);
             yourScore.setFont(new Font("Serif", Font.BOLD, 20));
-            tempbkg = gameOverbkg;
             yourScore.setBounds(550, 50, 200, 100);
             yourScore.setForeground(Color.black);
             add(yourScore);
             ScoreDB db = new ScoreDB();
-            db.save("ooooo", pointsCount);
+            db.save("sedang", pointsCount);
+            ArrayList<User> allUser = db.getAll();
+            for (User s : allUser) {
+//                JLabel nama = new JLabel(" " + s.getNama());
+//                nama.setFont(new Font("Serif", Font.BOLD, 10));
+//                nama.setBounds(550, 90, 200, 100);
+//                JLabel score = new JLabel(" " + s.getScore());
+//                score.setFont(new Font("Serif", Font.BOLD, 10));
+//                score.setBounds(550, 100, 200, 100);
+            }
         }
     }//end paintComponent
 }//end class
