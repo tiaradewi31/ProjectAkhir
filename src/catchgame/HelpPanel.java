@@ -16,13 +16,17 @@ import javax.swing.*;
 public class HelpPanel extends JPanel {
 
     Image helpbkg = new ImageIcon("images\\menuhelp.png").getImage(); //help image background
-    JButton back = new JButton("Back"); //back button
+    JButton back = new JButton(""); //back button
+
+    ImageIcon backbtn = new ImageIcon("buttons\\back.png");
     
     SoundHandler shButton;
 
     HelpPanel() {
         setFocusable(true); //setting the focus
-        add(back);			//adding back button in the panel
+        
+        back.setIcon(backbtn);
+        add(back); //adding back button in the panel
 
         back.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent me) {

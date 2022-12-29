@@ -18,6 +18,7 @@ public class LevelPanel extends JPanel {
     JButton easy = new JButton("");
     JButton medium = new JButton("");
     JButton hard = new JButton("");
+    JButton back = new JButton("");
 
     Image levelbkg = new ImageIcon("images\\menulevel.png").getImage();  //level background
 
@@ -25,6 +26,7 @@ public class LevelPanel extends JPanel {
     ImageIcon easybtn = new ImageIcon("buttons\\easy.png");
     ImageIcon mediumbtn = new ImageIcon("buttons\\medium.png");
     ImageIcon hardbtn = new ImageIcon("buttons\\hard.png");
+    ImageIcon backbtn = new ImageIcon("buttons\\back.png");
 
     JPanel center = new JPanel(); //adding another jpanel in a panel for boxLayout
     SoundHandler shButton;
@@ -42,16 +44,19 @@ public class LevelPanel extends JPanel {
         easy.setIcon(easybtn);
         medium.setIcon(mediumbtn);
         hard.setIcon(hardbtn);
+        back.setIcon(backbtn);
 
         /* adding the buttons in the panel */
         center.add(easy);
         center.add(medium);
         center.add(hard);
+        center.add(back);
 
         /* adding mouseListeners on buttons */
         easy.addMouseListener(new Click());
         medium.addMouseListener(new Click());
         hard.addMouseListener(new Click());
+        back.addMouseListener(new Click());
 
     }//end constructor
 
@@ -91,6 +96,16 @@ public class LevelPanel extends JPanel {
                     Logger.getLogger(LevelPanel.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 Game.cl.show(Game.cards, "GamePanelHard"); //show gamePanel when play is clicked
+            }
+            else if (me.getSource() == back){
+                Game.cl.show(Game.cards, "MenuPanel"); // show menuPanel when back button is clicked
+                try {
+//                    SoundHandler.RunMusic("Res/button1.wav");
+                        shButton = new SoundHandler();
+                        shButton.RunMusic("Res/button1.wav");
+                } catch (LineUnavailableException ex) {
+                    Logger.getLogger(HelpPanel.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
             
             //nambah if back disini ya bil
