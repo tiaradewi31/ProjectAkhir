@@ -18,7 +18,6 @@ public class LevelPanel extends JPanel {
     JButton easy = new JButton("");
     JButton medium = new JButton("");
     JButton hard = new JButton("");
-    JButton back = new JButton("Back");
 
     Image levelbkg = new ImageIcon("images\\menulevel.png").getImage();  //level background
 
@@ -28,10 +27,15 @@ public class LevelPanel extends JPanel {
     ImageIcon hardbtn = new ImageIcon("buttons\\hard.png");
 
     JPanel center = new JPanel(); //adding another jpanel in a panel for boxLayout
-    
-    LevelPanel() {
+    SoundHandler shButton;
+    MenuPanel mp;
 
-        center.setLayout(new BoxLayout(center, BoxLayout.PAGE_AXIS));//setting box layout
+    LevelPanel(MenuPanel mp){
+    //LevelPanel() {
+        this.mp = mp;
+//        mp.shMenu.StopMusic();
+
+        center.setLayout(new BoxLayout(center, BoxLayout.Y_AXIS));//setting box layout
         add(center); //adding the panel to another JPanel
 
         /* setting icons on buttons */
@@ -43,13 +47,11 @@ public class LevelPanel extends JPanel {
         center.add(easy);
         center.add(medium);
         center.add(hard);
-        center.add(back);
 
         /* adding mouseListeners on buttons */
         easy.addMouseListener(new Click());
         medium.addMouseListener(new Click());
         hard.addMouseListener(new Click());
-        back.addMouseListener(new Click());
 
     }//end constructor
 
@@ -58,7 +60,9 @@ public class LevelPanel extends JPanel {
         public void mouseClicked(MouseEvent me) {
             if (me.getSource() == easy) {
                 try {    
-                    SoundHandler.RunMusic("Res/button2.wav");
+                    shButton = new SoundHandler();
+                    shButton.RunMusic("Res/button2.wav");
+                    mp.shMenu.StopMusic();
                 } catch (LineUnavailableException ex) {
                     Logger.getLogger(LevelPanel.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -69,29 +73,24 @@ public class LevelPanel extends JPanel {
 //                    Logger.getLogger(LevelPanel.class.getName()).log(Level.SEVERE, null, ex);
 //                }
             }
-            if (me.getSource() == medium) {
+            else if (me.getSource() == medium) {
                 try {    
-                    SoundHandler.RunMusic("Res/button2.wav");
+                    shButton = new SoundHandler();
+                    shButton.RunMusic("Res/button2.wav");
                 } catch (LineUnavailableException ex) {
                     Logger.getLogger(LevelPanel.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 Game.cl.show(Game.cards, "GamePanelMedium"); //show gamePanel when play is clicked
             }
-            if (me.getSource() == hard) {
+            else if (me.getSource() == hard) {
                 try {    
-                    SoundHandler.RunMusic("Res/button2.wav");
+                    //SoundHandler.RunMusic("Res/button2.wav");
+                    shButton = new SoundHandler();
+                    shButton.RunMusic("Res/button2.wav");
                 } catch (LineUnavailableException ex) {
                     Logger.getLogger(LevelPanel.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 Game.cl.show(Game.cards, "GamePanelHard"); //show gamePanel when play is clicked
-            }
-            if (me.getSource() == back){
-                try {
-                    SoundHandler.RunMusic("Res/button1.wav");
-                } catch (LineUnavailableException ex) {
-                    Logger.getLogger(LevelPanel.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                Game.cl.show(Game.cards, "MenuPanel");
             }
             
             //nambah if back disini ya bil
