@@ -18,6 +18,7 @@ public class LevelPanel extends JPanel {
     JButton easy = new JButton("");
     JButton medium = new JButton("");
     JButton hard = new JButton("");
+    JButton back = new JButton("Back");
 
     Image levelbkg = new ImageIcon("images\\menulevel.png").getImage();  //level background
 
@@ -27,10 +28,10 @@ public class LevelPanel extends JPanel {
     ImageIcon hardbtn = new ImageIcon("buttons\\hard.png");
 
     JPanel center = new JPanel(); //adding another jpanel in a panel for boxLayout
-
+    
     LevelPanel() {
 
-        center.setLayout(new BoxLayout(center, BoxLayout.Y_AXIS));//setting box layout
+        center.setLayout(new BoxLayout(center, BoxLayout.PAGE_AXIS));//setting box layout
         add(center); //adding the panel to another JPanel
 
         /* setting icons on buttons */
@@ -42,11 +43,13 @@ public class LevelPanel extends JPanel {
         center.add(easy);
         center.add(medium);
         center.add(hard);
+        center.add(back);
 
         /* adding mouseListeners on buttons */
         easy.addMouseListener(new Click());
         medium.addMouseListener(new Click());
         hard.addMouseListener(new Click());
+        back.addMouseListener(new Click());
 
     }//end constructor
 
@@ -81,6 +84,14 @@ public class LevelPanel extends JPanel {
                     Logger.getLogger(LevelPanel.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 Game.cl.show(Game.cards, "GamePanelHard"); //show gamePanel when play is clicked
+            }
+            if (me.getSource() == back){
+                try {
+                    SoundHandler.RunMusic("Res/button1.wav");
+                } catch (LineUnavailableException ex) {
+                    Logger.getLogger(LevelPanel.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                Game.cl.show(Game.cards, "MenuPanel");
             }
             
             //nambah if back disini ya bil

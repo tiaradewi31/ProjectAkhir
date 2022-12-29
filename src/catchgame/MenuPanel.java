@@ -31,8 +31,12 @@ public class MenuPanel extends JPanel {
     ImageIcon playbtn = new ImageIcon("buttons\\play.png");
     ImageIcon helpbtn = new ImageIcon("buttons\\help.png");
     ImageIcon exitbtn = new ImageIcon("buttons\\EXIT (2).png");
+    
+    JPanel center = new JPanel();
 
     MenuPanel() {
+        center.setLayout(new BoxLayout(center,BoxLayout.LINE_AXIS)); //setting box layout 
+        add(center); //adding the panel to anothe JPanel
 
         /* setting icons on buttons */
         play.setIcon(playbtn);
@@ -40,9 +44,9 @@ public class MenuPanel extends JPanel {
         exit.setIcon(exitbtn);
 
         /* adding the buttons in the panel */
-        add(play);
-        add(help);
-        add(exit);
+        center.add(play);
+        center.add(help);
+        center.add(exit);
 
         /* adding mouseListeners on buttons */
         play.addMouseListener(new Click());
