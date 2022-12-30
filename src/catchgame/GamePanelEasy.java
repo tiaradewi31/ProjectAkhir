@@ -29,6 +29,7 @@ public class GamePanelEasy extends JPanel {
     JLabel soul;
     
     SoundHandler shButton;
+    SoundHandler shKalah;
     
     int pointsCount = 0;
     int counter = 0;
@@ -93,7 +94,6 @@ public class GamePanelEasy extends JPanel {
                 pointsCount += 2; // give 5 points on each catch
                 points.setText("Points:" + pointsCount); // set the count
                     try {
-                        //SoundHandler.RunMusic("Res/meow.wav");
                         shButton = new SoundHandler();
                         shButton.RunMusic("Res/meow.wav");
                     } catch (LineUnavailableException ex) {
@@ -108,6 +108,12 @@ public class GamePanelEasy extends JPanel {
 	void checkGameOver() {
             if (soulCount <= 0) {
                 gameOver = true;
+                    try {
+                        shKalah = new SoundHandler();
+                        shKalah.RunMusic("Res/gameover.wav");
+                    } catch (LineUnavailableException ex) {
+                        Logger.getLogger(GamePanelEasy.class.getName()).log(Level.SEVERE, null, ex);
+                    }
             }
         }
 	

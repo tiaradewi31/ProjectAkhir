@@ -30,6 +30,7 @@ public class LevelPanel extends JPanel {
 
     JPanel center = new JPanel(); //adding another jpanel in a panel for boxLayout
     SoundHandler shButton;
+    SoundHandler shMulai;
     MenuPanel mp;
 
     LevelPanel(MenuPanel mp){
@@ -68,20 +69,20 @@ public class LevelPanel extends JPanel {
                     shButton = new SoundHandler();
                     shButton.RunMusic("Res/button2.wav");
                     mp.shMenu.StopMusic();
+                    shMulai = new SoundHandler();
+                    shMulai.RunMusic("Res/play.wav");
                 } catch (LineUnavailableException ex) {
                     Logger.getLogger(LevelPanel.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 Game.cl.show(Game.cards, "GamePanelEasy"); //show gamePanel when play is clicked
-//                try {
-//                    SoundHandler.RunMusic("Res/play.wav");
-//                } catch (LineUnavailableException ex) {
-//                    Logger.getLogger(LevelPanel.class.getName()).log(Level.SEVERE, null, ex);
-//                }
             }
             else if (me.getSource() == medium) {
                 try {    
                     shButton = new SoundHandler();
                     shButton.RunMusic("Res/button2.wav");
+                    mp.shMenu.StopMusic();
+                    shMulai = new SoundHandler();
+                    shMulai.RunMusic("Res/play.wav");
                 } catch (LineUnavailableException ex) {
                     Logger.getLogger(LevelPanel.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -89,9 +90,11 @@ public class LevelPanel extends JPanel {
             }
             else if (me.getSource() == hard) {
                 try {    
-                    //SoundHandler.RunMusic("Res/button2.wav");
                     shButton = new SoundHandler();
                     shButton.RunMusic("Res/button2.wav");
+                    mp.shMenu.StopMusic();
+                    shMulai = new SoundHandler();
+                    shMulai.RunMusic("Res/play.wav");
                 } catch (LineUnavailableException ex) {
                     Logger.getLogger(LevelPanel.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -100,7 +103,6 @@ public class LevelPanel extends JPanel {
             else if (me.getSource() == back){
                 Game.cl.show(Game.cards, "MenuPanel"); // show menuPanel when back button is clicked
                 try {
-//                    SoundHandler.RunMusic("Res/button1.wav");
                         shButton = new SoundHandler();
                         shButton.RunMusic("Res/button1.wav");
                 } catch (LineUnavailableException ex) {

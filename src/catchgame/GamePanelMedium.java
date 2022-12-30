@@ -13,7 +13,7 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.*;
 import java.util.*;
-import java.util.*;
+import java.util.*; 
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.sound.sampled.LineUnavailableException;
@@ -33,6 +33,7 @@ public class GamePanelMedium extends JPanel {
     JLabel soul;
     
     SoundHandler shButton;
+    SoundHandler shKalah;
 
     int pointsCount = 0;
     int counter = 0;
@@ -94,7 +95,6 @@ public class GamePanelMedium extends JPanel {
             pointsCount += 5; // give 5 points on each catch
             points.setText("Points:" + pointsCount); // set the count
                     try {
-//                        SoundHandler.RunMusic("Res/meow.wav");
                         shButton = new SoundHandler();
                         shButton.RunMusic("Res/meow.wav");
 
@@ -110,6 +110,12 @@ public class GamePanelMedium extends JPanel {
     void checkGameOver() {
         if (soulCount <= 0) {
             gameOver = true;
+                    try {
+                        shKalah = new SoundHandler();
+                        shKalah.RunMusic("Res/gameover.wav");
+                    } catch (LineUnavailableException ex) {
+                        Logger.getLogger(GamePanelMedium.class.getName()).log(Level.SEVERE, null, ex);
+                    }
         }
     }
 	
