@@ -144,12 +144,12 @@ public class GamePanelHard extends JPanel {
 	void checkGameOver() {
             if (soulCount <= 0) {
                 gameOver = true;
-                    try {
-                        shKalah = new SoundHandler();
-                        shKalah.RunMusic("Res/gameover.wav");
-                    } catch (LineUnavailableException ex) {
-                        Logger.getLogger(GamePanelHard.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+//                    try {
+//                        shKalah = new SoundHandler();
+//                        shKalah.RunMusic("Res/gameover.wav");
+//                    } catch (LineUnavailableException ex) {
+//                        Logger.getLogger(GamePanelHard.class.getName()).log(Level.SEVERE, null, ex);
+//                    }
             }
         }
 	
