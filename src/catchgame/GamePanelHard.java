@@ -172,13 +172,24 @@ public class GamePanelHard extends JPanel {
                 repaint();           
             } else {          
                 g2d.drawImage(gameOverbkg, 0, 0, null);
+                String name = JOptionPane.showInputDialog("Masukkan Nama Anda");
+                JLabel yourName = new JLabel("Your Name :" + name);
+                yourName.setFont(new Font("Serif", Font.BOLD, 20));            
+                yourName.setBounds(550, 50, 200, 100);
+                yourName.setForeground(Color.black);
                 JLabel yourScore = new JLabel("Your SCORE :" + pointsCount);                
                 yourScore.setFont(new Font("Serif", Font.BOLD, 20));            
-                yourScore.setBounds(550, 50, 200, 100);
+                yourScore.setBounds(550, 80, 200, 100);
                 yourScore.setForeground(Color.black);
-                add(yourScore);            
+                add(yourScore);
+                add(yourName);
+                // JButton home = new JButton("");
+                // ImageIcon homebtn = new ImageIcon("buttons\\home.png");  
+                // home.setIcon(homebtn);
+                // home.addMouseListener(new Click());
+                // add(home);       
                 ScoreDB db = new ScoreDB();
-                db.save("syulit", pointsCount);
+                db.save(name, pointsCount);
                 ArrayList<User> allUser = db.getAll();
                 for(User s : allUser){
                     JLabel nama = new JLabel(" " + s.getNama());                
