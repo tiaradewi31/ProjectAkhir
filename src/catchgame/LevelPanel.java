@@ -38,7 +38,7 @@ public class LevelPanel extends JPanel {
         this.mp = mp;
 //        mp.shMenu.StopMusic();
 
-        center.setLayout(new BoxLayout(center, BoxLayout.Y_AXIS));//setting box layout
+        /*center.setLayout(new BoxLayout(center, BoxLayout.Y_AXIS));//setting box layout
         add(center); //adding the panel to another JPanel
 
         /* setting icons on buttons */
@@ -48,10 +48,17 @@ public class LevelPanel extends JPanel {
         back.setIcon(backbtn);
 
         /* adding the buttons in the panel */
-        center.add(easy);
-        center.add(medium);
-        center.add(hard);
-        center.add(back);
+        setLayout(null);
+        
+        this.add(easy);
+        this.add(medium);
+        this.add(hard);
+        this.add(back);
+        
+        easy.setBounds(550, 150, 180,70);
+        medium.setBounds(550,250, 180,70);
+        hard.setBounds(550, 350, 180,70);
+        back.setBounds(550, 450, 180,70);
 
         /* adding mouseListeners on buttons */
         easy.addMouseListener(new Click());

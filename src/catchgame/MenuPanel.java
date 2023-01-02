@@ -40,12 +40,18 @@ public class MenuPanel extends JPanel {
         play.setIcon(playbtn);
         help.setIcon(helpbtn);
         exit.setIcon(exitbtn);
-
+        
+        setLayout(null);
+        
         /* adding the buttons in the panel */
-        add(play);
-        add(help);
-        add(exit);
-
+        this.add(play);
+        this.add(help);
+        this.add(exit);
+        
+        play.setBounds(351, 170, 180,70);
+        help.setBounds(550, 170, 180,70);
+        exit.setBounds(749, 170, 180,70);
+        
         /* adding mouseListeners on buttons */
         play.addMouseListener(new Click());
         help.addMouseListener(new Click());

@@ -25,9 +25,11 @@ public class HelpPanel extends JPanel {
     HelpPanel() {
         setFocusable(true); //setting the focus
         
+        setLayout(null);
         back.setIcon(backbtn);
-        add(back); //adding back button in the panel
-
+        this.add(back); //adding back button in the panel
+        back.setBounds(550, 490, 180,70);
+        
         back.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent me) {
                 Game.cl.show(Game.cards, "MenuPanel"); // show menuPanel when back button is clicked
