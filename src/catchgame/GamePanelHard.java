@@ -171,7 +171,6 @@ public class GamePanelHard extends JPanel {
                 g2d.drawImage(cathard, x_cathard, y_cathard, null); //drawing cathard
                 repaint();           
             } else {          
-                g2d.drawImage(gameOverbkg, 0, 0, null);
                 String name = JOptionPane.showInputDialog("Masukkan Nama Anda");
                 JLabel yourName = new JLabel("Your Name :" + name);
                 yourName.setFont(new Font("Serif", Font.BOLD, 20));            
@@ -181,6 +180,7 @@ public class GamePanelHard extends JPanel {
                 yourScore.setFont(new Font("Serif", Font.BOLD, 20));            
                 yourScore.setBounds(550, 80, 200, 100);
                 yourScore.setForeground(Color.black);
+                g2d.drawImage(gameOverbkg, 0, 0, null);
                 add(yourScore);
                 add(yourName);
                 // JButton home = new JButton("");
