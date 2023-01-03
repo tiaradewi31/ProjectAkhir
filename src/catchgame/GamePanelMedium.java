@@ -23,6 +23,7 @@ public class GamePanelMedium extends JPanel {
     Image catmedium = new ImageIcon("images\\catmedium.png").getImage();
     Image ikanputih = new ImageIcon("images\\ikanputih.png").getImage();
     Image gameOverbkg = new ImageIcon("images\\menukalah.png").getImage();
+    ImageIcon backbtn = new ImageIcon("buttons\\back.png");
     Image tempbkg; //temporary background
 
     int x_catmedium, y_catmedium; //catmedium x and y  coordinates
@@ -31,6 +32,7 @@ public class GamePanelMedium extends JPanel {
 
     JLabel points;
     JLabel soul;
+    JButton back;
     
     SoundHandler shButton;
     SoundHandler shKalah;
@@ -56,6 +58,10 @@ public class GamePanelMedium extends JPanel {
         soul = new JLabel("Soul : 5");
         soul.setFont(new Font("Serif", Font.BOLD, 20));
         soul.setBounds(120, 20, 150, 20);
+        
+        back = new JButton("");
+        back.setIcon(backbtn);
+        back.setBounds(550, 490, 180,70);
 
         /*adding both components in jpanel*/
         add(points);
@@ -164,6 +170,21 @@ public class GamePanelMedium extends JPanel {
                     JLabel score = new JLabel( " " + s.getScore());                
                     score.setFont(new Font("Serif", Font.BOLD, 10));     
                     score.setBounds(550, 100, 200, 100);
+                    
+                    this.add(back); //adding back button in the panel
+        
+                 back.addMouseListener(new MouseAdapter() {
+                     public void mouseClicked(MouseEvent me) {
+                     Game.cl.show(Game.cards, "MenuPanel"); // show menuPanel when back button is clicked
+                         try {
+//                          SoundHandler.RunMusic("Res/button1.wav");
+                            shButton = new SoundHandler();
+                            shButton.RunMusic("Res/button1.wav");
+                        }catch (LineUnavailableException ex) {
+                            Logger.getLogger(GamePanelMedium.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
+                });
             }
         }
     }//end paintComponent

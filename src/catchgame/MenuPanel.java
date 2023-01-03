@@ -41,12 +41,12 @@ public class MenuPanel extends JPanel {
         help.setIcon(helpbtn);
         exit.setIcon(exitbtn);
         
-        setLayout(null);
-        
         /* adding the buttons in the panel */
         this.add(play);
         this.add(help);
         this.add(exit);
+        
+        setLayout(null);
         
         play.setBounds(351, 170, 180,70);
         help.setBounds(550, 170, 180,70);
