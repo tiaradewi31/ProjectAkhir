@@ -62,6 +62,7 @@ public class LevelPanel extends JPanel {
         easy.setBounds(550, 150, 180,70);
         medium.setBounds(550,250, 180,70);
         hard.setBounds(550, 350, 180,70);
+        back.setBounds(550, 450, 180,70);
 
 
         /* adding mouseListeners on buttons */
