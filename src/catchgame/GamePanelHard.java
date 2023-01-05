@@ -63,11 +63,11 @@ public class GamePanelHard extends JPanel {
         y_ikanhiu = 0;
 
         points = new JLabel("Points: 0");
-        points.setFont(new Font("Serif", Font.BOLD, 20));
+        points.setFont(new Font("Poppins", Font.BOLD, 20));
         points.setBounds(20, 20, 100, 20);
 
         soul = new JLabel("Soul : 5");
-        soul.setFont(new Font("Serif", Font.BOLD, 20));
+        soul.setFont(new Font("Poppins", Font.BOLD, 20));
         soul.setBounds(120, 20, 150, 20);
         
         back = new JButton("");
@@ -179,11 +179,11 @@ public class GamePanelHard extends JPanel {
             } else {          
                 String name = JOptionPane.showInputDialog("Masukkan Nama Anda");
                 JLabel yourName = new JLabel("Your Name :" + name);
-                yourName.setFont(new Font("Serif", Font.BOLD, 20));            
+                yourName.setFont(new Font("Poppins", Font.BOLD, 20));            
                 yourName.setBounds(575, 60, 200, 100);
                 yourName.setForeground(Color.black);
                 JLabel yourScore = new JLabel("Your SCORE :" + pointsCount);                
-                yourScore.setFont(new Font("Serif", Font.BOLD, 20));            
+                yourScore.setFont(new Font("Poppins", Font.BOLD, 20));            
                 yourScore.setBounds(575, 90, 200, 100);
                 yourScore.setForeground(Color.black);
                 g2d.drawImage(gameOverbkg, 0, 0, null);
@@ -200,11 +200,11 @@ public class GamePanelHard extends JPanel {
                 int a = 0;
                 for(User s : allUser){
                     JLabel nama = new JLabel(" " + s.getNama());                
-                    nama.setFont(new Font("Serif", Font.BOLD, 20));
+                    nama.setFont(new Font("Poppins", Font.BOLD, 20));
                     a += 30;
                     nama.setBounds(500, a, 300, 300);
                     JLabel score = new JLabel( " " + s.getScore());                
-                    score.setFont(new Font("Serif", Font.BOLD, 20));     
+                    score.setFont(new Font("Poppins", Font.BOLD, 20));     
                     score.setBounds(770, a, 300, 300);
                     
                     add(nama);

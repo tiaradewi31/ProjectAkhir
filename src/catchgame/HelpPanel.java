@@ -28,7 +28,7 @@ public class HelpPanel extends JPanel {
         setLayout(null);
         back.setIcon(backbtn);
         this.add(back); //adding back button in the panel
-        back.setBounds(550, 490, 180,70);
+        back.setBounds(550, 490, 180,70);//(x,y,width,height)
         
         back.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent me) {
