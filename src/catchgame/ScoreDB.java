@@ -25,6 +25,7 @@ public class ScoreDB{
     private String pass;
     private Statement stmt;
     private String query;
+    User us;
     
     public ScoreDB(){
         
@@ -44,20 +45,6 @@ public class ScoreDB{
             System.exit(1);
         }
     }
-
-    /*public void save (User user, JLabel yourScore){
-        try{
-            query = "INSERT INTO catchgame VALUES (%d)";
-            query = String.format(
-                    query,
-                    user.getScore());
-            stmt.executeUpdate(query);//untuk memodifikasi tabel student (nambah variabel)
-            System.out.println("Berhasil menambahkan data!");
-        }catch (SQLException ex){
-            System.err.print("Error Inserting data: " + ex.getMessage());
-            System.exit(1);
-        }
-    }*/
     
     public void save (String nama, int score){
         try{
@@ -79,66 +66,19 @@ public class ScoreDB{
         ArrayList<User> allUser = new ArrayList<>();
         
         try{
-            query = "SELECT * FROM catchgame ORDER BY score LIMIT 10";
+            query = "SELECT * FROM catchgame ORDER BY score DESC LIMIT 10";
             ResultSet rs = stmt.executeQuery(query);
             
-            while(rs.next()){
-                System.out.println("data berhasil diambil");
+            while(rs.next()){               
+                System.out.println(rs.getString(1) + " " + rs.getInt(2));
                 allUser.add(new User(
                             rs.getString(1),
-                            rs.getInt(2)
-            ));
+                            rs.getInt(2)));
             }
         }catch (SQLException ex){
             System.err.println("Error Getting The Data: " + ex.getMessage());
             System.exit(1);
         }
         return allUser;   
-
     }
-
-//    public User get() {
-//        int score = 0;
-//        User user = null;
-//        
-//        try{
-//            query = "SELECT * FROM catchgame ORDER BY score DESC LIMIT 10";
-//            //query = String.format(query, score);
-//            ResultSet rs = stmt.executeQuery(query);
-//            
-//            if(rs.next() != false){
-//                String s = rs.getString("nama");
-//                           rs.getInt("score");
-//            }else{
-//                System.out.println("Data Tidak Ditemukan.");
-//                System.exit(0);
-//            }
-//        }catch(SQLException ex){
-//            System.err.println("Error Getting The Data: " + ex.getMessage());
-//            System.exit(1);
-//        }
-//        return user;    
-//    }
-    
-    /*public ArrayList<User> getAll(){
-        ArrayList<User> User = new ArrayList<>();
-        
-        try{
-            query = "SELECT * FROM catchgame ORDER BY score LIMIT 10";
-            ResultSet rs = stmt.executeQuery(query);
-            
-            while(rs.next()){
-                allUser.add(new User(
-                            rs.getString(1),
-                            rs.getint(2)
-            ));
-            }
-        }catch (SQLException ex){
-            System.err.println("Error Getting The Data: " + ex.getMessage());
-            System.exit(1);
-        }
-        return allGame;   
-
-    }*/
-
 }   

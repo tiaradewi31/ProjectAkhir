@@ -17,7 +17,7 @@ public class GamePanel extends JPanel{
     Image ikanputih = new ImageIcon ("images\\ikanputih.png").getImage();
     Image cathard = new ImageIcon ("imgase\\cathard.png").getImage();
     Image ikanhiu = new ImageIcon("images\\ikanhiu.png").getImage();
-    Image gameOverbkg = new ImageIcon("images\\menukalah.png").getImage();
+    Image gameOverbkg = new ImageIcon("images\\gameover.png").getImage();
     Image tempbkg; //temporary background
     
     int x_cateasy, y_cateasy; //cateasy x and y  coordinates

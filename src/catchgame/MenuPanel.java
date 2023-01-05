@@ -24,6 +24,8 @@ public class MenuPanel extends JPanel {
     JButton play = new JButton("");
     JButton help = new JButton("");
     JButton exit = new JButton("");
+//    JButton leaderboard = new JButton("");
+
 
     Image menubkg = new ImageIcon("images\\menumeong.jpeg").getImage();  //menu background
 
@@ -31,6 +33,7 @@ public class MenuPanel extends JPanel {
     ImageIcon playbtn = new ImageIcon("buttons\\play.png");
     ImageIcon helpbtn = new ImageIcon("buttons\\help.png");
     ImageIcon exitbtn = new ImageIcon("buttons\\EXIT (2).png");
+//    ImageIcon lbbtn = new ImageIcon("buttons\\easy.png");
     SoundHandler shButton;
     SoundHandler shMenu;
 
@@ -40,22 +43,27 @@ public class MenuPanel extends JPanel {
         play.setIcon(playbtn);
         help.setIcon(helpbtn);
         exit.setIcon(exitbtn);
+//        leaderboard.setIcon(lbbtn);
+
         
         /* adding the buttons in the panel */
         this.add(play);
         this.add(help);
         this.add(exit);
+//        this.add(leaderboard);
         
         setLayout(null);
         
         play.setBounds(351, 170, 180,70);
         help.setBounds(550, 170, 180,70);
         exit.setBounds(749, 170, 180,70);
+//        leaderboard.setBounds(830, 170, 180, 70);
         
         /* adding mouseListeners on buttons */
         play.addMouseListener(new Click());
         help.addMouseListener(new Click());
         exit.addMouseListener(new Click());
+//        leaderboard.addMouseListener(new Click());
 
         try {
             shMenu = new SoundHandler();
@@ -83,7 +91,7 @@ public class MenuPanel extends JPanel {
 //                String getMessage = JOptionPane.showInputDialog("Masukkan Nama Anda");
 //                jFrame.setName(getMessage);
             }
-            if (me.getSource() == help) {
+            else if (me.getSource() == help) {
                 Game.cl.show(Game.cards, "HelpPanel"); //show helpPanel when help is clicked
                 try {
                    shButton = new SoundHandler();
@@ -92,7 +100,7 @@ public class MenuPanel extends JPanel {
                    Logger.getLogger(MenuPanel.class.getName()).log(Level.SEVERE, null, ex);
                }
             }
-            if (me.getSource() == exit) {
+            else if (me.getSource() == exit) {
                 System.exit(0);  //exit application when exit is clicked
                 try {
                    shButton = new SoundHandler();
@@ -101,6 +109,15 @@ public class MenuPanel extends JPanel {
                    Logger.getLogger(MenuPanel.class.getName()).log(Level.SEVERE, null, ex);
                }
             }
+//            else if (me.getSource() == leaderboard) {
+//                System.exit(0);  //exit application when exit is clicked
+//                try {
+//                   shButton = new SoundHandler();
+//                   shButton.RunMusic("Res/button1.wav");
+//               } catch (LineUnavailableException ex) {
+//                   Logger.getLogger(MenuPanel.class.getName()).log(Level.SEVERE, null, ex);
+//               }
+//            }
         }//end mouseClick
     }//end mouseAdapter
 

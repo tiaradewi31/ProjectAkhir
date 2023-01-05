@@ -14,6 +14,8 @@ public class Game extends JFrame {
     static GamePanelEasy gpe = new GamePanelEasy();
     static GamePanelMedium gpm = new GamePanelMedium();
     static GamePanelHard gph = new GamePanelHard();
+    
+//    static LeaderBoard lbp = new LeaderBoard ();
 
     static CardLayout cl = new CardLayout();
     static JPanel cards = new JPanel(); // to contain the panels as cards
@@ -30,7 +32,7 @@ public class Game extends JFrame {
 	add(cards); //adding the panel with cardlayout in JFrame
 		
 	setTitle("Hungry Cat");
-	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//agar gframe biisa di exit
 	setSize(1280, 720); //frame size
 	setVisible(true);
 	setResizable(false); //frame visibility    }

@@ -17,12 +17,13 @@ import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.sound.sampled.LineUnavailableException;
+import javax.swing.table.DefaultTableModel;
 
 public class GamePanelMedium extends JPanel {
     Image gamebkg = new ImageIcon("images\\menuplay.png").getImage();
     Image catmedium = new ImageIcon("images\\catmedium.png").getImage();
     Image ikanputih = new ImageIcon("images\\ikanputih.png").getImage();
-    Image gameOverbkg = new ImageIcon("images\\menukalah.png").getImage();
+    Image gameOverbkg = new ImageIcon("images\\gameover.png").getImage();
     ImageIcon backbtn = new ImageIcon("buttons\\back.png");
     Image tempbkg; //temporary background
 
@@ -141,16 +142,15 @@ public class GamePanelMedium extends JPanel {
             g2d.drawImage(ikanputih, x_ikanputih, y_ikanputih, null); //drawing ikanputih at new position
             g2d.drawImage(catmedium, x_catmedium, y_catmedium, null); //drawing catmedium
             repaint();
-        } else {
-            
+        } else {            
                 String name = JOptionPane.showInputDialog("Masukkan Nama Anda");
                 JLabel yourName = new JLabel("Your Name :" + name);
                 yourName.setFont(new Font("Serif", Font.BOLD, 20));            
-                yourName.setBounds(550, 50, 200, 100);
+                yourName.setBounds(575, 60, 300, 100);
                 yourName.setForeground(Color.black);
                 JLabel yourScore = new JLabel("Your SCORE :" + pointsCount);                
                 yourScore.setFont(new Font("Serif", Font.BOLD, 20));            
-                yourScore.setBounds(550, 80, 200, 100);
+                yourScore.setBounds(575, 90, 200, 100);
                 yourScore.setForeground(Color.black);
                 g2d.drawImage(gameOverbkg, 0, 0, null);
                 add(yourScore);
@@ -163,14 +163,19 @@ public class GamePanelMedium extends JPanel {
                 ScoreDB db = new ScoreDB();
                 db.save(name, pointsCount);
                 ArrayList<User> allUser = db.getAll();
+                int a = 0;
                 for(User s : allUser){
                     JLabel nama = new JLabel(" " + s.getNama());                
-                    nama.setFont(new Font("Serif", Font.BOLD, 10));     
-                    nama.setBounds(550, 90, 200, 100);
+                    nama.setFont(new Font("Serif", Font.BOLD, 20));
+                    a += 30;
+                    nama.setBounds(500, a, 300, 300);
                     JLabel score = new JLabel( " " + s.getScore());                
-                    score.setFont(new Font("Serif", Font.BOLD, 10));     
-                    score.setBounds(550, 100, 200, 100);
+                    score.setFont(new Font("Serif", Font.BOLD, 20));     
+                    score.setBounds(770, a, 300, 300);
                     
+                    add(nama);
+                    add(score);
+                } 
                     this.add(back); //adding back button in the panel
         
                  back.addMouseListener(new MouseAdapter() {
@@ -185,7 +190,8 @@ public class GamePanelMedium extends JPanel {
                         }
                     }
                 });
-            }
+                 
+            
         }
     }//end paintComponent
 }//end class

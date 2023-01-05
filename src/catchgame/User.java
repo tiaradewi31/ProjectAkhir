@@ -4,7 +4,10 @@
  */
 package catchgame;
 
+import static com.sun.deploy.uitoolkit.impl.fx.ui.resources.ResourceManager.getMessage;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -23,9 +26,16 @@ public class User {
         return nama;
     }
 
+//    public String setNama(String nama) {
+//        this.nama = nama;
+//    }
+
     public int getScore() {
         return score;
     }
 
+    String setNama() {
+        return nama;
+    }
     
 }

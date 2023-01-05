@@ -18,7 +18,7 @@ public class GamePanelEasy extends JPanel {
     Image gamebkg = new ImageIcon("images\\menuplay.png").getImage();
     Image cateasy = new ImageIcon("images\\cateasy.png").getImage();
     Image ikankuning = new ImageIcon("images\\ikankuning.png").getImage();
-    Image gameOverbkg = new ImageIcon("images\\menukalah.png").getImage();
+    Image gameOverbkg = new ImageIcon("images\\gameover.png").getImage();
     ImageIcon backbtn = new ImageIcon("buttons\\back.png");
     Image tempbkg; //temporary background
 
@@ -82,7 +82,7 @@ public class GamePanelEasy extends JPanel {
 
 	
 	void fallikankuning() {
-            if (y_ikankuning >= 500) {
+            if (y_ikankuning >= 500) {//batas jatuh ikan
                 y_ikankuning = 0;
                 x_ikankuning = rand.nextInt(1000); //posisi ikankuning jatuh
                 soulCount--;
@@ -93,8 +93,8 @@ public class GamePanelEasy extends JPanel {
         }//end kecepatan ikankuning
 	
 	void detectCollision() {
-            Rectangle cateasyRect = new Rectangle(x_cateasy, y_cateasy, 200, 65); //making a rectangle on the cateasy
-            Rectangle ikankuningRect = new Rectangle(x_ikankuning, y_ikankuning, 45, 67); //making a rectangle on ikankuning
+            Rectangle cateasyRect = new Rectangle(x_cateasy, y_cateasy, 200, 65); //making a rectangle on the cateasy, ukuran kucing
+            Rectangle ikankuningRect = new Rectangle(x_ikankuning, y_ikankuning, 45, 67); //making a rectangle on ikankuning, ukuran ikan
 
             if (ikankuningRect.intersects(cateasyRect)) {
                 pointsCount += 2; // give 5 points on each catch
@@ -143,11 +143,11 @@ public class GamePanelEasy extends JPanel {
                 String name = JOptionPane.showInputDialog("Masukkan Nama Anda");
                 JLabel yourName = new JLabel("Your Name :" + name);
                 yourName.setFont(new Font("Serif", Font.BOLD, 20));            
-                yourName.setBounds(550, 50, 200, 100);
+                yourName.setBounds(575, 60, 200, 100);
                 yourName.setForeground(Color.black);
                 JLabel yourScore = new JLabel("Your SCORE :" + pointsCount);                
                 yourScore.setFont(new Font("Serif", Font.BOLD, 20));            
-                yourScore.setBounds(550, 80, 200, 100);
+                yourScore.setBounds(575, 90, 200, 100);
                 yourScore.setForeground(Color.black);
                 g2d.drawImage(gameOverbkg, 0, 0, null);
                 add(yourScore);
@@ -160,14 +160,19 @@ public class GamePanelEasy extends JPanel {
                 ScoreDB db = new ScoreDB();
                 db.save(name, pointsCount);
                 ArrayList<User> allUser = db.getAll();
+                int a = 0;
                 for(User s : allUser){
                     JLabel nama = new JLabel(" " + s.getNama());                
-                    nama.setFont(new Font("Serif", Font.BOLD, 10));     
-                    nama.setBounds(550, 90, 200, 100);
+                    nama.setFont(new Font("Serif", Font.BOLD, 20));
+                    a += 30;
+                    nama.setBounds(500, a, 300, 300);
                     JLabel score = new JLabel( " " + s.getScore());                
-                    score.setFont(new Font("Serif", Font.BOLD, 10));     
-                    score.setBounds(550, 100, 200, 100);
-
+                    score.setFont(new Font("Serif", Font.BOLD, 20));     
+                    score.setBounds(770, a, 300, 300);
+                    
+                    add(nama);
+                    add(score);
+                } 
                     this.add(back); //adding back button in the panel
         
                  back.addMouseListener(new MouseAdapter() {
@@ -182,7 +187,7 @@ public class GamePanelEasy extends JPanel {
                         }
                     }
                 });
-              }
+              
                //repaint();
             }		
 	}//end paintComponent

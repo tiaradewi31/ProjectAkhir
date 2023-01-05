@@ -20,6 +20,8 @@ public class LevelPanel extends JPanel {
     JButton hard = new JButton("");
     JButton back = new JButton("");
 
+
+
     Image levelbkg = new ImageIcon("images\\menulevel.png").getImage();  //level background
 
     /* Setting icons on buttons */
@@ -27,6 +29,7 @@ public class LevelPanel extends JPanel {
     ImageIcon mediumbtn = new ImageIcon("buttons\\medium.png");
     ImageIcon hardbtn = new ImageIcon("buttons\\hard.png");
     ImageIcon backbtn = new ImageIcon("buttons\\back.png");
+
 
     JPanel center = new JPanel(); //adding another jpanel in a panel for boxLayout
     SoundHandler shButton;
@@ -54,18 +57,18 @@ public class LevelPanel extends JPanel {
         this.add(medium);
         this.add(hard);
         this.add(back);
+
         
         easy.setBounds(550, 150, 180,70);
         medium.setBounds(550,250, 180,70);
         hard.setBounds(550, 350, 180,70);
-        back.setBounds(550, 450, 180,70);
+
 
         /* adding mouseListeners on buttons */
         easy.addMouseListener(new Click());
         medium.addMouseListener(new Click());
         hard.addMouseListener(new Click());
         back.addMouseListener(new Click());
-
     }//end constructor
 
     class Click extends MouseAdapter { //internal friendly class
