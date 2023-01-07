@@ -22,7 +22,7 @@ public class LevelPanel extends JPanel {
 
 
 
-    Image levelbkg = new ImageIcon("images\\menulevel (2).png").getImage();  //level background
+    Image levelbkg = new ImageIcon("images\\level.png").getImage();  //level background
 
     /* Setting icons on buttons */
     ImageIcon easybtn = new ImageIcon("buttons\\easy.png");

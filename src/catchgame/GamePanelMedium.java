@@ -23,7 +23,7 @@ public class GamePanelMedium extends JPanel {
     Image gamebkg = new ImageIcon("images\\menuplay.png").getImage();
     Image catmedium = new ImageIcon("images\\catmedium.png").getImage();
     Image ikanputih = new ImageIcon("images\\ikanputih.png").getImage();
-    Image gameOverbkg = new ImageIcon("images\\gameover.png").getImage();
+    Image gameOverbkg = new ImageIcon("images\\game over.png").getImage();
     ImageIcon backbtn = new ImageIcon("buttons\\back.png");
     Image tempbkg; //temporary background
 

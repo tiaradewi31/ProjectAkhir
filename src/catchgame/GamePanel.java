@@ -13,7 +13,7 @@ import java.util.*;
 
 public class GamePanel extends JPanel{  
     //background
-    Image gamebkg = new ImageIcon ("images\\menuplay (2).png").getImage();
+    Image gamebkg = new ImageIcon ("images\\menuplay.png").getImage();
     Image gameOverbkg = new ImageIcon("images\\gameover.png").getImage();
 
     //object cat

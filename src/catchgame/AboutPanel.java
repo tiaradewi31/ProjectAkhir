@@ -15,7 +15,7 @@ import javax.swing.*;
 
 public class AboutPanel extends JPanel {
 
-    Image helpbkg = new ImageIcon("images\\menuabout.png").getImage(); //help image background
+    Image aboutbkg = new ImageIcon("images\\about.png").getImage();
     JButton back = new JButton(""); //back button
 
     ImageIcon backbtn = new ImageIcon("buttons\\back.png");
@@ -28,13 +28,12 @@ public class AboutPanel extends JPanel {
         setLayout(null);
         back.setIcon(backbtn);
         this.add(back); //adding back button in the panel
-        back.setBounds(550, 490, 180,70);//(x,y,width,height)
+        back.setBounds(550, 360, 180,70);//(x,y,width,height)
         
         back.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent me) {
                 Game.cl.show(Game.cards, "MenuPanel"); // show menuPanel when back button is clicked
                 try {
-//                    SoundHandler.RunMusic("Res/button1.wav");
                         shButton = new SoundHandler();
                         shButton.RunMusic("Res/button1.wav");
                 } catch (LineUnavailableException ex) {
@@ -47,7 +46,7 @@ public class AboutPanel extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
-        g2d.drawImage(helpbkg, 0, 0, null); // draw help background
+        g2d.drawImage(aboutbkg, 0, 0, null); // draw help background
         repaint();
     }//end paintComponent
 }//end class

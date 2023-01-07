@@ -15,7 +15,7 @@ import javax.swing.*;
 
 public class ScorePanel extends JPanel {
 
-    Image helpbkg = new ImageIcon("images\\menuscore.png").getImage(); //help image background
+    Image scorebkg = new ImageIcon("images\\score.png").getImage(); //help image background
     JButton back = new JButton(""); //back button
 
     ImageIcon backbtn = new ImageIcon("buttons\\back.png");
@@ -47,7 +47,7 @@ public class ScorePanel extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
-        g2d.drawImage(helpbkg, 0, 0, null); // draw help background
+        g2d.drawImage(scorebkg, 0, 0, null); // draw help background
         repaint();
     }//end paintComponent
 }//end class
