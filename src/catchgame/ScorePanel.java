@@ -7,6 +7,7 @@ package catchgame;
 import inputs.SoundHandler;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.sound.sampled.LineUnavailableException;
@@ -47,7 +48,23 @@ public class ScorePanel extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
+//        repaint();
+        ScoreDB db = new ScoreDB();
+        ArrayList<User> allUser = db.getAll();
+        int a = 0;
+        for (User s : allUser) {
+            JLabel nama = new JLabel(" " + s.getNama());
+            nama.setFont(new Font("Poppins", Font.BOLD, 20));
+            a += 30;
+            nama.setBounds(490, a, 300, 300);
+            JLabel score = new JLabel(" " + s.getScore());
+            score.setFont(new Font("Poppins", Font.BOLD, 20));
+            score.setBounds(770, a, 300, 300);
+
+            add(nama);
+            add(score);
+        }
         g2d.drawImage(scorebkg, 0, 0, null); // draw help background
-        repaint();
+//        repaint();
     }//end paintComponent
 }//end class

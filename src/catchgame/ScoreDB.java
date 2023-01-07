@@ -25,7 +25,7 @@ public class ScoreDB{
     private String pass;
     private Statement stmt;
     private String query;
-    User us;
+   
     
     public ScoreDB(){
         

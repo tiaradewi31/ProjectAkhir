@@ -96,20 +96,20 @@ public class GamePanelHard extends JPanel {
 	void fallikanputih() {
             if (y_ikanputih >= 505) {
                 y_ikanputih = 0;
-                x_ikanputih = rand.nextInt(1000); //posisi telur jatuh
+                x_ikanputih = rand.nextInt(1000); //posisi ikan jatuh
                 soulCount--;
             } else {
-                y_ikanputih += 2; //ngatur kecepatan telur
+                y_ikanputih += 2; //ngatur kecepatan ikan
             }
             soul.setText("Soul: " + soulCount);
         }
         void fallikanhiu() {
             if (y_ikanhiu >= 530) {
                 y_ikanhiu = 0;
-                x_ikanhiu = rand.nextInt(1000); //posisi telur jatuh
+                x_ikanhiu = rand.nextInt(1000); //posisi ikan jatuh
                 soulCount--;
             } else {
-                y_ikanhiu++; //ngatur kecepatan telur
+                y_ikanhiu++; //ngatur kecepatan ikan
             }
             soul.setText("Soul: " + soulCount);
         }

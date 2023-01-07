@@ -72,7 +72,7 @@ public class GamePanelEasy extends JPanel {
                     x_cateasy -= 50;
                     repaint(); // redraw at new position
                 }
-                if (ke.getKeyCode() == ke.VK_RIGHT & x_cateasy < 10500) {
+                if (ke.getKeyCode() == ke.VK_RIGHT & x_cateasy < 1050) {
                     x_cateasy += 50; // redraw at new position
                     repaint();
                 }
