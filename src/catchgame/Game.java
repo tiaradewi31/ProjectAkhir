@@ -10,12 +10,12 @@ import javax.swing.*;
 public class Game extends JFrame {
     static MenuPanel mp = new MenuPanel();
     static HelpPanel hp = new HelpPanel();
+	static AboutPanel ap = new AboutPanel();
     static LevelPanel lp = new LevelPanel(mp);
     static GamePanelEasy gpe = new GamePanelEasy();
     static GamePanelMedium gpm = new GamePanelMedium();
     static GamePanelHard gph = new GamePanelHard();
-    
-//    static LeaderBoard lbp = new LeaderBoard ();
+    static ScorePanel sp = new ScorePanel ();
 
     static CardLayout cl = new CardLayout();
     static JPanel cards = new JPanel(); // to contain the panels as cards
@@ -24,6 +24,8 @@ public class Game extends JFrame {
         cards.setLayout(cl);// setting the layout to cardlayout
 	cards.add(mp, "MenuPanel");
 	cards.add(hp, "HelpPanel");
+	cards.add(ap, "AboutPanel");
+	cards.add(sp, "ScorePanel");
 	cards.add(gpe, "GamePanelEasy");
 	cards.add(gpm, "GamePanelMedium");
 	cards.add(gph, "GamePanelHard");

@@ -22,7 +22,7 @@ public class LevelPanel extends JPanel {
 
 
 
-    Image levelbkg = new ImageIcon("images\\menulevel.png").getImage();  //level background
+    Image levelbkg = new ImageIcon("images\\menulevel (2).png").getImage();  //level background
 
     /* Setting icons on buttons */
     ImageIcon easybtn = new ImageIcon("buttons\\easy.png");
@@ -85,7 +85,10 @@ public class LevelPanel extends JPanel {
                 } catch (LineUnavailableException ex) {
                     Logger.getLogger(LevelPanel.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                Game.cl.show(Game.cards, "GamePanelEasy"); //show gamePanel when play is clicked
+                GamePanel gp = new GamePanel();
+                Game.cards.add(gp, "GamePanel");
+                GamePanel.level = "easy";
+                Game.cl.show(Game.cards, "GamePanel"); //show gamePanel when play is clicked
             }
             else if (me.getSource() == medium) {
                 try {    
@@ -97,7 +100,10 @@ public class LevelPanel extends JPanel {
                 } catch (LineUnavailableException ex) {
                     Logger.getLogger(LevelPanel.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                Game.cl.show(Game.cards, "GamePanelMedium"); //show gamePanel when play is clicked
+                GamePanel gp = new GamePanel();
+                Game.cards.add(gp, "GamePanel");
+                GamePanel.level = "medium";
+                Game.cl.show(Game.cards, "GamePanel"); //show gamePanel when play is clicked
             }
             else if (me.getSource() == hard) {
                 try {    
@@ -109,7 +115,10 @@ public class LevelPanel extends JPanel {
                 } catch (LineUnavailableException ex) {
                     Logger.getLogger(LevelPanel.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                Game.cl.show(Game.cards, "GamePanelHard"); //show gamePanel when play is clicked
+                GamePanel gp = new GamePanel();
+                Game.cards.add(gp, "GamePanel");
+                GamePanel.level = "hard";
+                Game.cl.show(Game.cards, "GamePanel"); //show gamePanel when play is clicked
             }
             else if (me.getSource() == back){
                 Game.cl.show(Game.cards, "MenuPanel"); // show menuPanel when back button is clicked
